@@ -10,12 +10,12 @@ public abstract class User
     /**
       * @param transaction  The transaction to be signed (a object that matches the RpcAPI structure).
       */
-    public abstract Task<ISignTransactionResponse> SignTransaction(Transaction transaction, ISignTransactionConfig config = null);
+    public abstract Task<SignTransactionResponse> SignTransaction(Transaction transaction, ISignTransactionConfig config = null);
 
     /**
       * @param actions   The actions to be included into the transaction to be signed (a object that matches the RpcAPI structure).
       */
-    public abstract Task<ISignTransactionResponse> SignTransaction(Action[] actions, ISignTransactionConfig config = null);
+    public abstract Task<SignTransactionResponse> SignTransaction(Action[] actions, ISignTransactionConfig config = null);
 
     //  /**
     //   * @param publicKey   The public key to use for signing.

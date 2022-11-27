@@ -21,12 +21,12 @@ public class ExampleUser : User
         throw new System.NotImplementedException();
     }
 
-    public override Task<ISignTransactionResponse> SignTransaction(Transaction transaction, ISignTransactionConfig config = null)
+    public override Task<SignTransactionResponse> SignTransaction(Transaction transaction, ISignTransactionConfig config = null)
     {
         throw new System.NotImplementedException();
     }
 
-    public override Task<ISignTransactionResponse> SignTransaction(Action[] actions, ISignTransactionConfig config)
+    public override Task<SignTransactionResponse> SignTransaction(Action[] actions, ISignTransactionConfig config)
     {
         throw new System.NotImplementedException();
     }

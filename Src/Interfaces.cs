@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using EosSharp.Core.Api.v1;
 using UnityEngine;
 
 public class AuthenticatorResponse
@@ -67,35 +68,30 @@ public interface ISignTransactionConfig
     public uint? expireSeconds { get; set; }
 }
 
-///** The object returned from signTransaction */
-public interface ISignTransactionResponse
+public class UalError
 {
-    /** Was the transaction broadcast */
-    public bool wasBroadcast { get; set; }
 
-    /** The transcation id (optional) */
-    public string? transactionId { get; set; }
+    /** The error code */
+    public string code { get; set; }
 
+    /** The error message */
+    public string message { get; set; }
+
+    /** The error name */
+    public string name { get; set; }
+}
+
+///** The object returned from signTransaction */
+public class SignTransactionResponse
+{
     /** The status of the transaction as returned by the RPC API (optional) */
     public string? status { get; set; }
 
     /** Set if there was an error */
-    public IError Error { get; set; }
+    public UalError UalError { get; set; }
 
-    public interface IError {
-
-        /** The error code */
-        public string code { get; set; }
-
-        /** The error message */
-        public string message { get; set; }
-
-        /** The error name */
-        public string name { get; set; }
-    }
-    
     /** The raw transaction object */
-    public object transaction { get; set; }
+    public ProcessedTransaction transaction { get; set; }
 }
 
 //export const UALLoggedInAuthType = 'UALLoggedInAuthType'

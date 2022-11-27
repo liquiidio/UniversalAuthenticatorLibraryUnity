@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,6 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 524437999}
   - component: {fileID: 524438000}
+  - component: {fileID: 524438003}
+  - component: {fileID: 524438002}
+  - component: {fileID: 524438001}
   m_Layer: 0
   m_Name: UnityUAL
   m_TagString: Untagged
@@ -164,12 +167,77 @@ MonoBehaviour:
   m_GameObject: {fileID: 524437998}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d642667b3d778240a19cb23231915f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 17f8875b291fee8419da034986b63e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AppName: 
   Authenticators:
-  - {fileID: 1936779408}
+  - {fileID: 524438003}
+  - {fileID: 524438002}
+  - {fileID: 524438001}
+--- !u!114 &524438001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524437998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96ca551f58879242a73d5414e468a58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonStyle:
+    Icon: {fileID: 0}
+    Text: 
+    TextColor:
+      serializedVersion: 2
+      rgba: 0
+    Background:
+      serializedVersion: 2
+      rgba: 0
+--- !u!114 &524438002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524437998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2176f5b636e7f544c8e176a029f40dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonStyle:
+    Icon: {fileID: 0}
+    Text: 
+    TextColor:
+      serializedVersion: 2
+      rgba: 0
+    Background:
+      serializedVersion: 2
+      rgba: 0
+--- !u!114 &524438003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524437998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775bc9daf53194042b7479a5f88d0dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonStyle:
+    Icon: {fileID: 0}
+    Text: 
+    TextColor:
+      serializedVersion: 2
+      rgba: 0
+    Background:
+      serializedVersion: 2
+      rgba: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,51 +416,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1693105109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1693105111}
-  - component: {fileID: 1693105110}
-  m_Layer: 0
-  m_Name: TestObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1693105110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693105109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27bb238020980e540bae2f841eac61f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnityUAL: {fileID: 524438000}
---- !u!4 &1693105111
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693105109}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936779406
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,15 +457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1936779406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f139c8393c0bc634090f8672107885a7, type: 3}
+  m_Script: {fileID: 11500000, guid: be346c08ca7eb31429d0083d61a538de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonStyle:
-    Icon: {fileID: 0}
-    Text: 
-    TextColor:
-      serializedVersion: 2
-      rgba: 0
-    Background:
-      serializedVersion: 2
-      rgba: 0
+  UnityUAL: {fileID: 524438000}
