@@ -3,15 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExampleScript : MonoBehaviour
+public class MultiUiExampleScript : MonoBehaviour
 {
-    public UnityUAL UnityUAL;
-    
+    private UnityUAL _unityUal;
+
+    public UnityCanvasUAL UnityCanvasUAL;
+    public UnityUiToolkitUAL UnityUiToolkitUAL;
+
+    public bool UseCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
-        UnityUAL.Init();
-        //UnityUAL.OnLoggedIn += OnLoggedIn;
+        if (UseCanvas)
+            _unityUal = UnityCanvasUAL;
+        else
+            _unityUal = UnityUiToolkitUAL;
+
+        _unityUal.OnUserLogin += OnLoggedIn;
+        _unityUal.Init();
     }
 
     // Update is called once per frame
@@ -23,7 +33,7 @@ public class ExampleScript : MonoBehaviour
     void OnLoggedIn(User[] users)
     {
         var user = users[0];
-        
+
         user.SignTransaction(new Action[] {
             new Action()
                 {

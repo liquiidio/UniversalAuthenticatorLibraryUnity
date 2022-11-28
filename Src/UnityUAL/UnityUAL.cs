@@ -7,11 +7,13 @@ using UnityEngine;
 
 
 // based on https://github.com/EOSIO/ual-plainjs-renderer/blob/master/src/UALJs.ts
-public class UnityUAL : MonoBehaviour
+public abstract class UnityUAL : MonoBehaviour
 {
     public IChain[] Chains;
     public string AppName;
     public List<Authenticator> Authenticators;
+
+    public Action<User[]> OnUserLogin;
 
     /**
      * @param chains          A list of chains the dapp supports.
@@ -70,16 +72,12 @@ public class UnityUAL : MonoBehaviour
             // I think we should also allow for a little bit of styling
             // like horizontal vs. vertical alignment (or even auto, for mobile?!)
 
-            foreach(var authenticator in authenticators.AvailableAuthenticators)
-            {
-                // Has Icon, Style, TextColor etc.
-                var buttonStyle = authenticator.GetStyle();
-
-                // called when the specific Button is pressed
-                Action onClick = () => LoginUser(authenticator);
-            }
+            CreateUalPanel(authenticators.AvailableAuthenticators);
         }
     }
+
+    // override in Canvas/UiToolkit
+    protected abstract void CreateUalPanel(Authenticator[] authenticators);
 
     private void AttemptSessionLogin(Authenticator[] availableAuthenticators)
     {
@@ -131,7 +129,7 @@ public class UnityUAL : MonoBehaviour
 
             // send our users back, this should be done different, within the Authenticator,
             // likely in Update() to allow asynchronity of events
-            UserCallbackHandler(users);
+            OnUserLogin?.Invoke(users);
 
         }
         catch (Exception e)
@@ -146,11 +144,5 @@ public class UnityUAL : MonoBehaviour
         {
             //this.dom!.reset()
         }
-    }
-
-    // TODO, this should be done different
-    private void UserCallbackHandler(User[] users)
-    {
-        throw new NotImplementedException();
     }
 }
