@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnityCanvasUAL : UnityUAL
 {
-    public UnityCanvasUAL(IChain[] chains, string appName, List<Authenticator> authenticators) : base(chains, appName, authenticators)
+    public UnityCanvasUAL(Chain chain, UALOptions ualOptions, List<Authenticator> authenticators) : base(chain, ualOptions, authenticators)
     {
     }
 

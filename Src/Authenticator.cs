@@ -15,9 +15,9 @@ public class Authenticator : MonoBehaviour
     [SerializeField]
     private ButtonStyle ButtonStyle;
 
-    private IChain[] Chains;
+    private Chain Chain;
 
-    //private object Options;
+    private UALOptions Options;
 
     //  /**
     //   * @param chains     This represents each of the chains that the dapp provides support for.
@@ -26,10 +26,10 @@ public class Authenticator : MonoBehaviour
     //   */
     //  constructor(public chains: Chain[], public options?: any) {}
 
-    public Authenticator(IChain[] chains, object options)
+    public Authenticator(Chain chain, UALOptions options)
     {
-        Chains = chains;
-        //Options = options;
+        Chain = chain;
+        Options = options;
     }
 
 
@@ -37,8 +37,11 @@ public class Authenticator : MonoBehaviour
     //  /**
     //   * Attempts to render the Authenticator and updates the authenticator's state, accordingly
     //   */
-    //  public abstract init() : Promise<void>
-
+    public virtual void Init(Chain chain, UALOptions options)
+    {
+        Chain = chain;
+        Options = options;
+    }
     //  /**
     //   * Resets the authenticator to its initial, default state then calls init method
     //   */
@@ -108,7 +111,7 @@ public class Authenticator : MonoBehaviour
     // *
     // * @param accountName  The account name of the user for Authenticators that do not store accounts (optional)
     // */
-    public virtual Task<User[]> Login(string accountName = null)
+    public virtual Task<User> Login(string accountName = null)
     {
         throw new NotImplementedException();
     }

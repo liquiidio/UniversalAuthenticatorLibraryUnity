@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnityUiToolkitUAL : UnityUAL
 {
-    public UnityUiToolkitUAL(IChain[] chains, string appName, List<Authenticator> authenticators) : base(chains, appName, authenticators)
+    public UnityUiToolkitUAL(Chain chain, UALOptions ualOptions, List<Authenticator> authenticators) : base(chain, ualOptions, authenticators)
     {
     }
 

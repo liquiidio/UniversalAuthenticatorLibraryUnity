@@ -59,13 +59,13 @@ public class WombatUser : User
         })).permissions.SingleOrDefault(p => p.perm_name == "active")?.required_auth.keys.First().key;
     }
 
-    public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, ISignTransactionConfig config = null)
+    public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)
     {
         _wombatPlugin.Sign(transaction.actions.ToArray());
         return await WaitForEvent();
     }
 
-    public override async Task<SignTransactionResponse> SignTransaction(Action[] actions, ISignTransactionConfig config = null)
+    public override async Task<SignTransactionResponse> SignTransaction(Action[] actions, SignTransactionConfig config = null)
     {
         _wombatPlugin.Sign(actions);
         return await WaitForEvent();
@@ -85,8 +85,8 @@ public class WombatUser : User
         {
             return new SignTransactionResponse()
             {
-                transaction = _wombatSignEvent.Result.processed,
-                status = "",
+                Transaction = _wombatSignEvent.Result.processed,
+                Status = "",
             };
         }
         else if (_wombatErrorEvent != null)
@@ -94,7 +94,7 @@ public class WombatUser : User
             UalError ualError;
             ualError = new UalError()
             {
-                message = _wombatErrorEvent.Message
+                Message = _wombatErrorEvent.Message
             };
             //catch (EosSharp.Core.Exceptions.ApiErrorException e)
             //{
@@ -116,7 +116,7 @@ public class WombatUser : User
 
             return new SignTransactionResponse()
             {
-                status = "",
+                Status = "",
                 UalError = ualError
             };
         }
@@ -126,7 +126,7 @@ public class WombatUser : User
             {
                 UalError = new UalError()
                 {
-                    message = "Timed out"
+                    Message = "Timed out"
                 }
             };
         }

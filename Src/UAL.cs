@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UAL 
 {
-    public IChain[] Chains;
+    public Chain[] Chains;
     public string AppName;
     public Authenticator[] Authenticators;
 
@@ -16,7 +16,7 @@ public class UAL
      *
      * @param authenticators  A list of authenticator apps that the dapp supports.
      */
-    public UAL(IChain[] chains, string appName, Authenticator[] authenticators)
+    public UAL(Chain[] chains, string appName, Authenticator[] authenticators)
     {
         Chains = chains;
         AppName = appName;

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &170583206516470924
+--- !u!1 &8954897135277827193
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 170583206516470925}
-  - component: {fileID: 170583206516470934}
+  - component: {fileID: 8954897135277827192}
+  - component: {fileID: 8954897135277827171}
   m_Layer: 0
   m_Name: UnityUiToolkitUAL
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &170583206516470925
+--- !u!4 &8954897135277827192
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170583206516470924}
+  m_GameObject: {fileID: 8954897135277827193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,19 +32,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &170583206516470934
+--- !u!114 &8954897135277827171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170583206516470924}
+  m_GameObject: {fileID: 8954897135277827193}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3223d78d07469d446a001254a429f0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AppName: liquiidtest
+  Chain:
+    ChainId: 1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4
+    RpcEndpoints:
+    - Protocol: https
+      Host: api.wax.liquidstudios.io
+      Port: 0
+      Path: 
+  UalOptions:
+    Identifier: liquiidtest
+    SignTransactionConfig:
+      Broadcast: 1
+      BlocksBehind: 3
+      ExpireSeconds: 60
   Authenticators:
   - {fileID: 0}
   - {fileID: 0}

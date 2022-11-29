@@ -58,13 +58,13 @@ public class WaxCloudWalletUser : User
         })).permissions.SingleOrDefault(p => p.perm_name == "active")?.required_auth.keys.First().key;
     }
 
-    public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, ISignTransactionConfig config = null)
+    public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)
     {
         _waxCloudWalletPlugin.Sign(transaction.actions.ToArray());
         return await WaitForEvent();
     }
 
-    public override async Task<SignTransactionResponse> SignTransaction(Action[] actions, ISignTransactionConfig config = null)
+    public override async Task<SignTransactionResponse> SignTransaction(Action[] actions, SignTransactionConfig config = null)
     {
         _waxCloudWalletPlugin.Sign(actions);
         return await WaitForEvent();
@@ -84,8 +84,8 @@ public class WaxCloudWalletUser : User
         {
             return new SignTransactionResponse()
             {
-                transaction = _wcwSignEvent.Result.processed,
-                status = "",
+                Transaction = _wcwSignEvent.Result.processed,
+                Status = "",
             };
         }
         else if(_wcwErrorEvent != null)
@@ -93,7 +93,7 @@ public class WaxCloudWalletUser : User
             UalError ualError;
             ualError = new UalError()
             {
-                message = _wcwErrorEvent.Message
+                Message = _wcwErrorEvent.Message
             };
             //catch (EosSharp.Core.Exceptions.ApiErrorException e)
             //{
@@ -115,7 +115,7 @@ public class WaxCloudWalletUser : User
 
             return new SignTransactionResponse()
             {
-                status = "",
+                Status = "",
                 UalError = ualError
             };
         }
@@ -125,7 +125,7 @@ public class WaxCloudWalletUser : User
             {
                 UalError = new UalError()
                 {
-                    message = "Timed out"
+                    Message = "Timed out"
                 }
             };
         }

@@ -1,31 +1,49 @@
+using System;
 using AnchorLinkSharp;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Assets.Packages.AnchorLinkTransportSharp.Src;
 using EosioSigningRequest;
 using EosSharp.Core.Api.v1;
 using UnityEngine;
 
+[Serializable]
+public class AnchorWalletConfig
+{
+    public bool StoreSession;
+}
+
+
 public class AnchorAuthenticator : Authenticator
 {
-    private readonly AnchorLink _link;
+    public UnityTransport Transport;
+
+    private AnchorLink _link;
     private string _identifier;
 
-    private readonly List<AnchorUser> _users = new List<AnchorUser>();
+    private AnchorUser _user;
 
-    public AnchorAuthenticator(IChain[] chains, object options) : base(chains, options)
+    public AnchorAuthenticator(Chain chain, UALOptions options) : base(chain, options)
     {
+        Init(chain, options);
+    }
+
+    public sealed override void Init(Chain chain, UALOptions options)
+    {
+        _identifier = options.Identifier;
         _link = new AnchorLink(new LinkOptions()
         {
-            ChainId = "",
-            Rpc = "",
-            Service = "",
+            ChainId = chain.ChainId,
+            Rpc = chain.RpcEndpoints[0].HttpEndpoint,
+            Transport = Transport
         });
     }
 
-    public override async Task<User[]> Login(string accountName = null)
+    public override async Task<User> Login(string accountName = null)
     {
+        // TODO, do we need to set the Transport to active first?
         var session = await _link.RestoreSession(_identifier, new PermissionLevel()
         {
             actor = accountName,
@@ -37,18 +55,13 @@ public class AnchorAuthenticator : Authenticator
             var identifyResult = await _link.Login(_identifier);
             session = identifyResult.Session;
         }
-        var newUsers = new AnchorUser[] {new AnchorUser(session)};
-        _users.AddRange(newUsers.ToList());
-        return newUsers;
+        _user = new AnchorUser(session); 
+        return _user;
     }
 
     public override async Task Logout()
     {
-        foreach (var anchorUser in _users)
-        {
-            // TODO remove Session (this is from Storage) - or just clear the current Users and active Sessions?
-            await anchorUser.Session.Remove();
-        }
+        await _user.Session.Remove();
     }
 
     public override bool ShouldAutoLogin()

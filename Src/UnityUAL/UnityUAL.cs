@@ -1,19 +1,17 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
 
 // based on https://github.com/EOSIO/ual-plainjs-renderer/blob/master/src/UALJs.ts
 public abstract class UnityUAL : MonoBehaviour
 {
-    public IChain[] Chains;
-    public string AppName;
+    public Chain Chain;
+    public UALOptions UalOptions;
     public List<Authenticator> Authenticators;
 
-    public Action<User[]> OnUserLogin;
+    public Action<User> OnUserLogin;
 
     /**
      * @param chains          A list of chains the dapp supports.
@@ -22,10 +20,10 @@ public abstract class UnityUAL : MonoBehaviour
      *
      * @param authenticators  A list of authenticator apps that the dapp supports.
      */
-    public UnityUAL(IChain[] chains, string appName, List<Authenticator> authenticators)
+    public UnityUAL(Chain chain, UALOptions ualOptions, List<Authenticator> authenticators)
     {
-        Chains = chains;
-        AppName = appName;
+        Chain = chain;
+        UalOptions = ualOptions;
         Authenticators = authenticators;
     }
 
@@ -52,6 +50,14 @@ public abstract class UnityUAL : MonoBehaviour
      */
     public void Init()
     {
+        foreach (var authenticator in Authenticators)
+        {
+            authenticator.Init(Chain, new UALOptions()
+            {
+                Identifier = UalOptions.Identifier
+            });
+        }
+
         var authenticators = GetAuthenticators();
 
         // perform this check first, if we're autologging in we don't render a dom
@@ -65,12 +71,6 @@ public abstract class UnityUAL : MonoBehaviour
         {
             // check for existing session and resume if possible
             AttemptSessionLogin(authenticators.AvailableAuthenticators);
-
-            // TODO @Evans @David, here we show the UI with the different Buttons somehow
-            // we need to decide if we go with 2 different UnityUALs (Canvas and UiToolki)
-            // or if we use some form of configuration
-            // I think we should also allow for a little bit of styling
-            // like horizontal vs. vertical alignment (or even auto, for mobile?!)
 
             CreateUalPanel(authenticators.AvailableAuthenticators);
         }
@@ -102,7 +102,7 @@ public abstract class UnityUAL : MonoBehaviour
 
     private async void LoginUser(Authenticator authenticator, string accountName = null)
     {
-        User[] users;
+        User user;
 
         // set the active authenticator so we can use it in logout
         ActiveAuthenticator = authenticator;
@@ -118,18 +118,18 @@ public abstract class UnityUAL : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(accountName))
             {
-                users = await authenticator.Login(accountName);
+                user = await authenticator.Login(accountName);
 
                 PlayerPrefs.SetString("UALJs.SESSION_ACCOUNT_NAME_KEY", accountName);
             }
             else
             {
-                users = await authenticator.Login();
+                user = await authenticator.Login();
             }
 
             // send our users back, this should be done different, within the Authenticator,
             // likely in Update() to allow asynchronity of events
-            OnUserLogin?.Invoke(users);
+            OnUserLogin?.Invoke(user);
 
         }
         catch (Exception e)

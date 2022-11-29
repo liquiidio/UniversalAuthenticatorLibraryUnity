@@ -6,6 +6,7 @@ using UnityEngine;
 public class MultiUiExampleScript : MonoBehaviour
 {
     private UnityUAL _unityUal;
+    private User _user;
 
     public UnityCanvasUAL UnityCanvasUAL;
     public UnityUiToolkitUAL UnityUiToolkitUAL;
@@ -30,11 +31,10 @@ public class MultiUiExampleScript : MonoBehaviour
         
     }
 
-    void OnLoggedIn(User[] users)
+    async void OnLoggedIn(User user)
     {
-        var user = users[0];
-
-        user.SignTransaction(new Action[] {
+        _user = user;
+        await _user.SignTransaction(new Action[] {
             new Action()
                 {
                     account = "eosio.token",
@@ -42,9 +42,9 @@ public class MultiUiExampleScript : MonoBehaviour
                     authorization = new List<PermissionLevel>() {  }, // TODO
                     data = new Dictionary<string, object>()
                     {
-                        { "from", user },
-                        { "to", "teamgreymass" },
-                        { "quantity", "0.0001 EOS" },
+                        { "from", await _user.GetAccountName() },
+                        { "to", "test1.liq" },
+                        { "quantity", "0.00010000 WAX" },
                         { "memo", "Anchor is the best! Thank you <3" }
                     }
                 }

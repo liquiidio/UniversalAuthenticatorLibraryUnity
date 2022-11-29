@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1083663573525587147
+--- !u!1 &8621893889864280349
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1083663573525587146}
-  - component: {fileID: 1083663573525587149}
+  - component: {fileID: 8621893889864280348}
+  - component: {fileID: 8621893889864280347}
   m_Layer: 0
   m_Name: WaxCloudWalletUAL
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1083663573525587146
+--- !u!4 &8621893889864280348
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083663573525587147}
+  m_GameObject: {fileID: 8621893889864280349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1083663573525587149
+--- !u!114 &8621893889864280347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083663573525587147}
+  m_GameObject: {fileID: 8621893889864280349}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a51e8ddb6f92ef243b20ffef15246aaf, type: 3}
@@ -53,3 +53,15 @@ MonoBehaviour:
     Background:
       serializedVersion: 2
       rgba: 0
+  WaxCloudWalletConfig:
+    RpcAddress: https://wax.greymass.com
+    TryAutoLogin: 1
+    WaxSigningURL: 
+    WaxAutoSigningURL: 
+    LocalPort: 1234
+    SigningWebsiteUrl: http://localhost:1234/index.html
+    HostLocalWebsite: 1
+    IndexHtmlString: 
+    WaxJsHtmlString: 
+    IndexHtmlPath: Packages/WcwUnityWebGl/Assets/index.html
+    WaxJsPath: Packages/WcwUnityWebGl/Assets/waxjs.js

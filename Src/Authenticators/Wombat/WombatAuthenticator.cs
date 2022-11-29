@@ -6,11 +6,16 @@ using UnityEngine;
 
 public class WombatAuthenticator : Authenticator
 {
-    private readonly WombatPlugin _wombatPlugin;
+    private WombatPlugin _wombatPlugin;
 
     private WombatUser _user;
 
-    public WombatAuthenticator(IChain[] chains, object options) : base(chains, options)
+    public WombatAuthenticator(Chain chain, UALOptions options) : base(chain, options)
+    {
+        Init(chain, options);
+    }
+
+    public sealed override void Init(Chain chain, UALOptions options)
     {
         _wombatPlugin = new GameObject(nameof(WombatPlugin)).AddComponent<WombatPlugin>();
         _wombatPlugin.OnLoggedIn = loginEvent =>
@@ -19,7 +24,7 @@ public class WombatAuthenticator : Authenticator
         };
     }
 
-    public override async Task<User[]> Login(string accountName = null)
+    public override async Task<User> Login(string accountName = null)
     {
         _wombatPlugin.Login();
 
@@ -30,7 +35,7 @@ public class WombatAuthenticator : Authenticator
             i++;
         }
 
-        return new[] { _user };
+        return _user;
     }
 
     public override async Task Logout()
@@ -41,7 +46,7 @@ public class WombatAuthenticator : Authenticator
 
     public override bool ShouldAutoLogin()
     {
-        return true;
+        return false;
     }
 
     public override bool ShouldRender()

@@ -1,8 +1,7 @@
+using System;
 using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
 using EosSharp.Core.Api.v1;
-using UnityEngine;
 
 public class AuthenticatorResponse
 {
@@ -13,87 +12,94 @@ public class AuthenticatorResponse
     public Authenticator AutoLoginAuthenticator { get; set; }
 }
 
+[Serializable]
+public class UALOptions
+{
+    /** The Apps Identifier **/
+    [JsonProperty("identifier")]
+    public string Identifier;
 
-
-///** The fields that an Authenticator can style on their button */
-//export interface ButtonStyle
-//{
-//    /** Whatever is provided here will be set as the `src` attribute */
-//    icon: string
-
-//    text: string
-//    textColor: string
-
-//    /** CSS string */
-//    background: string
-//}
+    [JsonProperty("signTransactionConfig")]
+    public SignTransactionConfig SignTransactionConfig;
+}
 
 ///** Defines a supported chain */
-public interface IChain
+[Serializable]
+public class Chain
 {
     /** The chainId for the chain */
-    [JsonProperty("")]
-    public string ChainId { get; set; }
+    [JsonProperty("chainId")] 
+    public string ChainId;
 
     /** One or more rpcEndpoints associated with that chainId */
     [JsonProperty("rpcEndpoints")]
-    public IRpcEndpoint[] RpcEndpoints { get; set; }
+    public List<RpcEndpoint> RpcEndpoints;
 }
 
-public interface IRpcEndpoint
+[Serializable]
+public class RpcEndpoint
 {
-    [JsonProperty("protocol")]
-    public string Protocol { get; set; }
+    [JsonProperty("protocol")] 
+    public string Protocol; 
     
     [JsonProperty("host")]
-    public string Host { get; set; }
+    public string Host;
     
     [JsonProperty("port")]
-    public ushort Port { get; set; }
+    public ushort Port;
 
     [JsonProperty("path")]
-    public string? Path { get; set; } // nullable
+    public string Path;
+
+    public string HttpEndpoint 
+        => $"{(!string.IsNullOrEmpty(Protocol) ? $"{Protocol}://" : "")}{Host}{(Port != 0 ? $":{Port}" : "")}{(!string.IsNullOrEmpty(Path) ? $"/{Path}" : "")}";
+
 }
 
 ///** Optional arguments to signTransaction */
-public interface ISignTransactionConfig
+[Serializable]
+public class SignTransactionConfig
 {
     /** If the transaction should also be broadcast */
-    public bool? broadcast { get; set; }
+    [JsonProperty("broadcast")]
+    public bool Broadcast;
 
-    /** Number of blocks behind (for use with eosjs) */
-    public uint? blocksBehind { get; set; }
+    /** Number of blocks behind */
+    [JsonProperty("blocksBehind")]
+    public uint BlocksBehind;
 
-    /** Number of seconds before expiration (for use with eosjs) */
-    public uint? expireSeconds { get; set; }
+    /** Number of seconds before expiration */
+    [JsonProperty("expireSeconds")]
+    public uint ExpireSeconds;
 }
 
 public class UalError
 {
-
     /** The error code */
-    public string code { get; set; }
+    [JsonProperty("code")]
+    public string Code { get; set; }
 
     /** The error message */
-    public string message { get; set; }
+    [JsonProperty("message")]
+    public string Message { get; set; }
 
     /** The error name */
-    public string name { get; set; }
+    [JsonProperty("name")]
+    public string Name { get; set; }
 }
 
 ///** The object returned from signTransaction */
 public class SignTransactionResponse
 {
     /** The status of the transaction as returned by the RPC API (optional) */
-    public string? status { get; set; }
+    [JsonProperty("status")]
+    public string? Status { get; set; }
 
     /** Set if there was an error */
+    [JsonProperty("ualError")]
     public UalError UalError { get; set; }
 
     /** The raw transaction object */
-    public ProcessedTransaction transaction { get; set; }
+    [JsonProperty("transaction")]
+    public ProcessedTransaction Transaction { get; set; }
 }
-
-//export const UALLoggedInAuthType = 'UALLoggedInAuthType'
-
-//export const UALAccountName = 'UALAccountName'

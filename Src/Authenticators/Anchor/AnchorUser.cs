@@ -33,12 +33,12 @@ public class AnchorUser : User
         return Session.PublicKey;
     }
 
-    public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, ISignTransactionConfig config = null)
+    public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)
     {
         return await Transact(null, null, transaction);
     }
 
-    public override async Task<SignTransactionResponse> SignTransaction(Action[] actions, ISignTransactionConfig config = null)
+    public override async Task<SignTransactionResponse> SignTransaction(Action[] actions, SignTransactionConfig config = null)
     {
         return await Transact(null, actions, null);
     }
@@ -48,34 +48,34 @@ public class AnchorUser : User
         UalError ualError;
         try
         {
-            var transactResult = await Session.Transact(new TransactArgs() { Action = null, Actions = null, Transaction = transaction });
+            var transactResult = await Session.Transact(new TransactArgs() { Action = action, Actions = actions, Transaction = transaction });
             return new SignTransactionResponse()
             {
-                transaction = transactResult.Processed,
-                status = "",
+                Transaction = transactResult.Processed,
+                Status = "",
             };
         }
         catch (EosSharp.Core.Exceptions.ApiErrorException e)
         {
             ualError = new UalError()
             {
-                code = e.code.ToString(),
-                message = e.message,
-                name = e.error.name
+                Code = e.code.ToString(),
+                Message = e.message,
+                Name = e.error.name
             };
         }
         catch (EosSharp.Core.Exceptions.ApiException e)
         {
             ualError = new UalError()
             {
-                code = e.StatusCode.ToString(),
-                message = e.Message
+                Code = e.StatusCode.ToString(),
+                Message = e.Message
             };
         }
 
         return new SignTransactionResponse()
         {
-            status = "",
+            Status = "",
             UalError = ualError
         };
     }

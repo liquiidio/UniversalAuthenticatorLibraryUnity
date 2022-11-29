@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class ExampleAuthenticator : Authenticator
 {
-    public ExampleAuthenticator(IChain[] chains, object options) : base(chains, options)
+    public ExampleAuthenticator(Chain chain, UALOptions options) : base(chain, options)
     {
 
     }
 
-    public override Task<User[]> Login(string accountName = null)
+    public override void Init(Chain chain, UALOptions options)
+    {
+
+    }
+
+    public override Task<User> Login(string accountName = null)
     {
         return null;
     }
