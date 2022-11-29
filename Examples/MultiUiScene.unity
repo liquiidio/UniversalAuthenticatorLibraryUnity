@@ -183,6 +183,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67cdaec8c20a254aa290ded36be5f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+--- !u!4 &524437999 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8954897135277827192, guid: d5e196c296bd09d43804629902b575da, type: 3}
+  m_PrefabInstance: {fileID: 8954897134854319511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &524438004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8954897135277827171, guid: d5e196c296bd09d43804629902b575da, type: 3}
+  m_PrefabInstance: {fileID: 8954897134854319511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3223d78d07469d446a001254a429f0ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &524438005
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861f192dbb92d1c43ac4205baf345b1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chain:
+    ChainId: 
+    RpcEndpoints: []
+  UalOptions:
+    Identifier: 
+    SignTransactionConfig:
+      Broadcast: 0
+      BlocksBehind: 0
+      ExpireSeconds: 0
+  Authenticators: []
+>>>>>>> f20a353 (ual ui-panel set up)
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
