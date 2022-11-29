@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Src/UiToolkit/StyleSheets/UALStyle.uss?fileID=7433441132597879392&amp;guid=d326bcb302fe003438d71eaa35f9e104&amp;type=3#UALStyle" />
+    <ui:VisualElement name="screen" style="width: 100%; height: 100%; align-items: center; justify-content: center;">
+        <ui:VisualElement name="ual-buttons-container" style="width: 360px; height: 300px; align-items: center; margin-top: 0; margin-bottom: 0; justify-content: center;">
+            <ui:VisualElement name="authenticator-box" class="wallet-box-item" style="flex-direction: row; margin-top: 20px; margin-bottom: 20px;">
+                <ui:VisualElement name="logo-icon" class="logo-icon" style="height: 100%;" />
+                <ui:VisualElement name="authenticator-text-container" class="wallet-text-box">
+                    <ui:Label text="wallet authenticator" display-tooltip-when-elided="true" name="authenticator-text" style="font-size: 20px; -unity-font-style: bold;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="info-container" style="height: 100%; justify-content: center;">
+                    <ui:VisualElement name="info-icon" class="info-icon" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
