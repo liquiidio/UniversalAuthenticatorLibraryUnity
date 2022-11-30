@@ -59,10 +59,6 @@ x64/
 *.log
 *.scc
 
-# OS generated files #
-.DS_Store*
-Icon?
-
 # Visual C++ cache files
 ipch/
 *.aps
