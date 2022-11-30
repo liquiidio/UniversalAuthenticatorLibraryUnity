@@ -45,14 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonStyle:
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 4147140822cfa604f9677764e3f580be, type: 3}
     Text: Wax Cloud Wallet
     TextColor:
       serializedVersion: 2
-      rgba: 0
+      rgba: 4294967295
     Background:
       serializedVersion: 2
-      rgba: 0
+      rgba: 4278190080
   WaxCloudWalletConfig:
     RpcAddress: https://wax.greymass.com
     TryAutoLogin: 1

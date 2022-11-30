@@ -66,7 +66,7 @@ public class AnchorAuthenticator : Authenticator
 
     public override bool ShouldAutoLogin()
     {
-        return true;
+        return false;
     }
 
     public override bool ShouldRender()
