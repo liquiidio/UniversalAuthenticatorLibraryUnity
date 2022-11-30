@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 --- !u!4 &524437999 stripped
 Transform:
@@ -224,6 +225,8 @@ MonoBehaviour:
       ExpireSeconds: 0
   Authenticators: []
 >>>>>>> f20a353 (ual ui-panel set up)
+=======
+>>>>>>> 0ca3613 (added ui-stuff)
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,12 +71,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
             {
                 // Has Icon, Style, TextColor etc.
                 var buttonStyle = authenticator.GetStyle();
-
-                _authenticatorButtonBox.Add(AuthenticatorButtonItem.Clone(buttonStyle, () =>
-                {
-                    //LoginUser(authenticator);
-                    Hide();
-                }));
             }
         }
         #endregion
