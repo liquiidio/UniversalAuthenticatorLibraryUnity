@@ -51,9 +51,15 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
+<<<<<<< HEAD
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 0
+=======
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 2
+>>>>>>> 8e3db56 (adds ui)
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -61,7 +67,11 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+<<<<<<< HEAD
   ignorePngGamma: 0
+=======
+  ignorePngGamma: 1
+>>>>>>> 8e3db56 (adds ui)
   applyGammaDecoding: 0
   cookieLightType: 0
   platformSettings:
