@@ -46,14 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonStyle:
-    Icon: {fileID: 0}
+    Icon: {fileID: 2800000, guid: 35cefa4c34515a04a81968b6ffd5cefb, type: 3}
     Text: Anchor
     TextColor:
       serializedVersion: 2
-      rgba: 0
+      rgba: 4294967295
     Background:
       serializedVersion: 2
-      rgba: 0
+      rgba: 4288761150
   Transport: {fileID: 6444037364690363215}
 --- !u!1001 &3875698331425258028
 PrefabInstance:
