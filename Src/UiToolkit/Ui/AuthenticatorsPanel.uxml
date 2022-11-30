@@ -1,24 +1,28 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Src/UiToolkit/StyleSheets/UALStyle.uss?fileID=7433441132597879392&amp;guid=d326bcb302fe003438d71eaa35f9e104&amp;type=3#UALStyle" />
+    <Style src="project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Src/UiToolkit/StyleSheets/UALStyle.uss?fileID=7433441132597879392&amp;guid=e6d0b4a05511f724799cc048c9a5bb14&amp;type=3#UALStyle" />
     <ui:VisualElement name="screen" style="width: 100%; height: 100%; align-items: center; justify-content: center;">
-        <ui:VisualElement name="authenticator-panel" style="width: 420px; height: 429px; background-color: rgb(255, 255, 255); border-top-left-radius: 4px; border-bottom-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; margin-bottom: 50px; margin-top: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 10px; padding-right: 30px; max-width: 100%; min-width: auto; max-height: 100%;">
-            <ui:Button display-tooltip-when-elided="true" name="close-view-button" class="close-view-button" />
+        <ui:VisualElement name="authenticator-panel" style="width: 420px; height: auto; background-color: rgb(255, 255, 255); border-top-left-radius: 4px; border-bottom-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; margin-bottom: 50px; margin-top: 10px; padding-left: 30px; padding-top: 10px; padding-bottom: 10px; padding-right: 30px; max-width: 100%; min-width: auto; max-height: 100%;">
+            <ui:Button display-tooltip-when-elided="true" name="close-view-button" class="close-view-button" style="background-image: url(&apos;project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Assets/delete%20(2).png?fileID=2800000&amp;guid=39cdc971236a3ec44b46cc495e477a63&amp;type=3#delete (2)&apos;);" />
             <ui:VisualElement name="title-container" style="width: 360px; height: 88px; padding-left: 15px; padding-right: 15px; padding-top: 20px;">
                 <ui:Label text="To continue please select an option" display-tooltip-when-elided="true" name="ual-title-label" style="margin-left: 0; margin-right: 0; margin-bottom: 0; background-color: rgba(49, 71, 128, 0); color: rgb(49, 71, 128); -unity-font-style: bold; font-size: 28px; width: 330px; height: 73.33px; white-space: normal; margin-top: 0;" />
             </ui:VisualElement>
-            <ui:VisualElement name="authenticator-buttons-container" style="width: 360px; height: 330px; align-items: center; margin-top: 0; margin-bottom: 0; justify-content: flex-end;">
+            <ui:VisualElement name="authenticator-buttons-container" style="width: 360px; height: 300.94px; align-items: center; margin-top: 0; margin-bottom: 0; justify-content: space-around;">
                 <ui:VisualElement name="authenticator-button-box" />
-                <ui:VisualElement style="width: 330px; height: 64.27px; flex-direction: column; justify-content: flex-end;">
-                    <ui:VisualElement name="info-container" style="display: none; visibility: hidden;">
-                        <ui:Label text="This option allows you to connect to your favorite key manager app." display-tooltip-when-elided="true" name="learn-label" style="white-space: normal; width: 330px; height: 29.33px;" />
-                        <ui:VisualElement name="button-container" style="flex-direction: row; margin-top: 10px; display: flex; visibility: visible;">
-                            <ui:VisualElement name="icon" style="background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/icondeletedremote.png?fileID=2800000&amp;guid=b85a4b2ec6433d04895612d791edc260&amp;type=3#icondeletedremote&apos;); width: 16px; height: 16px;" />
-                            <ui:Label text=" I got it!" display-tooltip-when-elided="true" name="info-label" style="color: rgb(0, 181, 255); -unity-font-style: bold;" />
+                <ui:VisualElement style="width: 330px; height: 69px; flex-direction: column; justify-content: flex-end;">
+                    <ui:VisualElement name="info-container" style="display: none; visibility: hidden; height: auto; width: 330px;">
+                        <ui:VisualElement name="info-box" style="flex-direction: column; align-items: stretch;">
+                            <ui:Label text="This option allows you to connect to your favorite key manager app." display-tooltip-when-elided="true" name="info-label" style="white-space: normal; width: 330px; height: 29.33px; visibility: visible; color: rgb(154, 153, 153);" />
+                            <ui:VisualElement name="button-container" style="flex-direction: row; margin-top: 16px; display: flex; visibility: visible; background-image: none; align-items: center; margin-bottom: 16px;">
+                                <ui:VisualElement name="icon" style="background-image: url(&apos;project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Assets/x-mark.png?fileID=2800000&amp;guid=bf6ff09bb749845468952b905d9154d8&amp;type=3#x-mark&apos;); width: 16px; height: 16px; margin-right: 6px;" />
+                                <ui:Label text=" I got it!" display-tooltip-when-elided="true" name="info-label" style="color: rgb(51, 115, 220); -unity-font-style: bold; -unity-text-align: middle-left; height: 16px;" />
+                            </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement name="learn-more-container" style="flex-direction: row; width: 300px; height: 18.94px; margin-top: 10px; margin-bottom: 0; display: flex; visibility: visible;">
-                        <ui:VisualElement name="icon" style="background-image: url(&apos;project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Assets/information.png?fileID=2800000&amp;guid=d7cf55431cb08f34086ce2b1fe163aea&amp;type=3#information&apos;); width: 16px; height: 16px;" />
-                        <ui:Label text="Learn more" display-tooltip-when-elided="true" name="info-label" style="color: rgb(0, 181, 255); -unity-font-style: bold;" />
+                    <ui:VisualElement name="learn-more-container" style="flex-direction: row; width: 300px; height: 18.94px; margin-top: 16px; margin-bottom: 16px; display: flex; visibility: visible; align-items: center;">
+                        <ui:VisualElement name="learn-box" style="flex-direction: row; align-items: center;">
+                            <ui:VisualElement name="icon" style="background-image: url(&apos;project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Assets/information%20(2).png?fileID=2800000&amp;guid=fdbd0a681cc2cf545ab9ddd17dd3f89d&amp;type=3#information (2)&apos;); width: 16px; height: 16px; margin-right: 6px;" />
+                            <ui:Label text="Learn more" display-tooltip-when-elided="true" name="learn-label" style="color: rgb(64, 125, 223); -unity-font-style: bold; -unity-text-align: middle-center; height: 16px;" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

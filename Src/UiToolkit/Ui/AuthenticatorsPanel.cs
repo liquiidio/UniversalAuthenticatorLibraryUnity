@@ -1,11 +1,16 @@
 using Assets.Packages.AnchorLinkTransportSharp.Src.Transports.UiToolkit.Ui;
+using Unity.VisualScripting;
+using System;
 using UnityEngine.UIElements;
 
 namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
 {
     public class AuthenticatorsPanel : ScreenBase
     {
-        private VisualElement _authenticatorButtonBox;
+        /*
+         * Cloneable
+         */
+        public AuthenticatorButtonItem AuthenticatorButtonItem;
 
         /*
          * Child-Controls
@@ -17,11 +22,16 @@ namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
 
         private VisualElement _learnMoreContainer;
         private VisualElement _infoContainer;
+        public VisualElement _authenticatorButtonBox;
+        private VisualElement _learnBox;
+        private VisualElement _infoBox;
 
         private void Start()
         {
             _closeViewButton = Root.Q<Button>("close-view-button");
             _authenticatorButtonBox = Root.Q<VisualElement>("authenticator-button-box");
+            _learnBox = Root.Q<VisualElement>("learn-box");
+            _infoBox = Root.Q<VisualElement>("button-container");
             _learnMoreContainer = Root.Q<VisualElement>("learn-more-container");
             _infoContainer = Root.Q<VisualElement>("info-container");
             _infoLabel = Root.Q<Label>("info-label");
@@ -36,13 +46,13 @@ namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
         {
             _closeViewButton.clickable.clicked += () => Hide();
 
-            _infoLabel.RegisterCallback<ClickEvent>(evt =>
+            _infoBox.RegisterCallback<ClickEvent>(evt =>
             {
                 _learnMoreContainer.Show();
                 _infoContainer.Hide();
             });
 
-            _learnLabel.RegisterCallback<ClickEvent>(evt =>
+            _learnBox.RegisterCallback<ClickEvent>(evt =>
             {
                 _learnMoreContainer.Hide();
                 _infoContainer.Show();
@@ -50,5 +60,26 @@ namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
         }
 
         #endregion
+
+        #region Rebind
+
+        public void Rebind(Authenticator[] authenticators, Action<Authenticator> onClick)
+        {
+            _authenticatorButtonBox.Add(AuthenticatorButtonItem.Clone());
+
+            foreach (var authenticator in authenticators)
+            {
+                // Has Icon, Style, TextColor etc.
+                var buttonStyle = authenticator.GetStyle();
+
+                _authenticatorButtonBox.Add(AuthenticatorButtonItem.Clone(buttonStyle, () =>
+                { 
+                    //LoginUser(authenticator);
+                    Hide();
+                }));
+            }
+        }
+        #endregion
+
     }
 }

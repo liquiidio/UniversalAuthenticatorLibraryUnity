@@ -100,7 +100,7 @@ public abstract class UnityUAL : MonoBehaviour
         }
     }
 
-    private async void LoginUser(Authenticator authenticator, string accountName = null)
+    public async void LoginUser(Authenticator authenticator, string accountName = null)
     {
         User user;
 

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
 {
     [Serializable()]
-    public class BasicControl
+    public class BasicControl : MonoBehaviour
     {
         /// <summary>
         /// The UXML file to render
