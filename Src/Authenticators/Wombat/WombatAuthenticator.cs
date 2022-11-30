@@ -51,7 +51,7 @@ public class WombatAuthenticator : Authenticator
 
     public override bool ShouldRender()
     {
-#if UNITY_WEBGL
+#if UNITY_WEBGL || UNITY_EDITOR
         return true;        
 #endif
         return false;
