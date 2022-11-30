@@ -9,7 +9,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
 {
     public class AuthenticatorButtonItem : BasicControl
     {
-        public VisualElement Clone(Texture2D icon, string authenticatorText, Color textColor, Color background, Action onClickAction)
+        public VisualElement Clone(ButtonStyle buttonStyle, Action onClickAction)
         {
             var element = new VisualElement();
 
@@ -17,14 +17,14 @@ namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
             element.styleSheets.Add(unityStyleSheet);
 
             var logo = element.Q<VisualElement>("logo-icon");
-            logo.style.backgroundImage = icon;
+            logo.style.backgroundImage = buttonStyle.Icon.texture;
 
             var walletTypeLabel = element.Q<Label>("authenticator-text");
-            walletTypeLabel.text = authenticatorText;
-            walletTypeLabel.style.color = textColor;
+            walletTypeLabel.text = buttonStyle.Text;
+            walletTypeLabel.style.color = buttonStyle.TextColor;
 
             var walletBoxBackground = element.Q<VisualElement>("authenticator-box");
-            walletBoxBackground.style.backgroundColor = background;
+            walletBoxBackground.style.backgroundColor = buttonStyle.Background;
 
             element.RegisterCallback<ClickEvent>((clickEvent) => onClickAction());
 
