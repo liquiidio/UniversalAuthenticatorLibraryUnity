@@ -295,6 +295,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c56047dbbdb8604298218d3223912df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &254141384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5790161301705532972, guid: d5e196c296bd09d43804629902b575da, type: 3}
+  m_PrefabInstance: {fileID: 1228282106}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bcd5a7ca0dc5147a3ef7defd261c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &467823277
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +680,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1625224922938762205, guid: d5e196c296bd09d43804629902b575da, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1625224922938762205, guid: d5e196c296bd09d43804629902b575da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -716,6 +727,14 @@ PrefabInstance:
       value: UnityUiToolkitUAL
       objectReference: {fileID: 0}
     - target: {fileID: 5568680674799704786, guid: d5e196c296bd09d43804629902b575da, type: 3}
+      propertyPath: authenticatorsPanel
+      value: 
+      objectReference: {fileID: 254141384}
+    - target: {fileID: 5568680674799704786, guid: d5e196c296bd09d43804629902b575da, type: 3}
+      propertyPath: authenticatorButtonItem
+      value: 
+      objectReference: {fileID: 1228282108}
+    - target: {fileID: 5568680674799704786, guid: d5e196c296bd09d43804629902b575da, type: 3}
       propertyPath: Authenticators.Array.data[0]
       value: 
       objectReference: {fileID: 1920575669}
@@ -727,6 +746,10 @@ PrefabInstance:
       propertyPath: Authenticators.Array.data[2]
       value: 
       objectReference: {fileID: 248480347}
+    - target: {fileID: 5568680674799704786, guid: d5e196c296bd09d43804629902b575da, type: 3}
+      propertyPath: Chain.RpcEndpoints.Array.data[0].Protocol
+      value: https://api.wax.liquidstudios.io
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5e196c296bd09d43804629902b575da, type: 3}
 --- !u!4 &1228282107 stripped
@@ -734,6 +757,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1625224922938762205, guid: d5e196c296bd09d43804629902b575da, type: 3}
   m_PrefabInstance: {fileID: 1228282106}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1228282108 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5790161301705532973, guid: d5e196c296bd09d43804629902b575da, type: 3}
+  m_PrefabInstance: {fileID: 1228282106}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfd94e07016b3a49895f135eccfbf6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1469124316
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +848,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnityUiToolkitUal: {fileID: 1935166910}
-  ExampleMainView: {fileID: 0}
 --- !u!1001 &1920575667
 PrefabInstance:
   m_ObjectHideFlags: 0

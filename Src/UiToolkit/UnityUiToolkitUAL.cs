@@ -19,13 +19,14 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
         protected override void CreateUalPanel(Authenticator[] authenticators)
         {
             AuthenticatorsPanel.Show();
+            AuthenticatorsPanel.AuthenticatorButtonBox.Clear();
 
             foreach (var authenticator in authenticators)
             {
                 // Has Icon, Style, TextColor etc.
                 var buttonStyle = authenticator.GetStyle();
 
-                AuthenticatorsPanel._authenticatorButtonBox.Add(AuthenticatorButtonItem.Clone(buttonStyle, () =>
+                AuthenticatorsPanel.AuthenticatorButtonBox.Add(AuthenticatorButtonItem.Clone(buttonStyle, () =>
                 {
                     LoginUser(authenticator);
                     AuthenticatorsPanel.Hide();

@@ -1,6 +1,10 @@
 using EosSharp.Core.Api.v1;
 using System.Collections;
 using System.Collections.Generic;
+using AnchorLinkSharp;
+using Assets.Packages.AnchorLinkTransportSharp.Src;
+using Assets.Packages.AnchorLinkTransportSharp.Src.StorageProviders;
+using Assets.Packages.AnchorLinkTransportSharp.Src.Transports.UiToolkit;
 using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit;
 using UnityEngine;
 
@@ -44,8 +48,8 @@ public class MultiUiExampleScript : MonoBehaviour
                     data = new Dictionary<string, object>()
                     {
                         { "from", await _user.GetAccountName() },
-                        { "to", "test1.liq" },
-                        { "quantity", "0.00010000 WAX" },
+                        { "to", "test3.liq" },
+                        { "quantity", "1 WAX" },
                         { "memo", "Anchor is the best! Thank you <3" }
                     }
                 }

@@ -807,6 +807,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3223d78d07469d446a001254a429f0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1931473228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6444037364690363215, guid: 19cba96ab1c793d419e990e6005c3456, type: 3}
+  m_PrefabInstance: {fileID: 1931474708}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66fe7a51846b27449f9b77fa74319bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1931474708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -934,6 +945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnityCanvasUAL: {fileID: 1129609305}
   UnityUiToolkitUAL: {fileID: 1688003510}
+  Transport: {fileID: 1931473228}
   UseCanvas: 0
 --- !u!1001 &170583206872874338
 PrefabInstance:
@@ -1014,6 +1026,10 @@ PrefabInstance:
       propertyPath: Authenticators.Array.data[2]
       value: 
       objectReference: {fileID: 993594595}
+    - target: {fileID: 5568680674799704786, guid: d5e196c296bd09d43804629902b575da, type: 3}
+      propertyPath: Chain.RpcEndpoints.Array.data[0].Protocol
+      value: https://api.wax.liquidstudios.io
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5e196c296bd09d43804629902b575da, type: 3}
 --- !u!1001 &749592923917736057

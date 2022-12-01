@@ -1,6 +1,7 @@
 using System;
 using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EosSharp.Core.Api.v1;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,7 +16,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
          */
         private Button _changeToBidNameButton;
         private Button _changeToBuyRamButton;
-        private Button _changeToRestoreSessionButton;
         private Button _changeToSellRamButton;
         private Button _changeToTransferButton;
         private Button _changeToVoteButton;
@@ -45,14 +45,14 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         private VisualElement _buyRamBox;
         private VisualElement _voteBox;
 
-        private Label _subtitleLabel;
-        private Label _loginTitleLabel;
         private Label _accountLabel;
 
         /*
          * Fields, Properties
          */
         [SerializeField] internal UALUiToolkitExample UALUiToolkitExample;
+
+        public User User;
 
 
         private void Start()
@@ -62,7 +62,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _changeToSellRamButton = Root.Q<Button>("change-to-sell-ram-button");
             _changeToBuyRamButton = Root.Q<Button>("change-to-buy-ram-button");
             _changeToBidNameButton = Root.Q<Button>("change-to-bid-button");
-            _changeToRestoreSessionButton = Root.Q<Button>("change-top-restore-button");
 
             _transferTokenButton = Root.Q<Button>("transfer-token-button");
             _voteButton = Root.Q<Button>("vote-button");
@@ -72,8 +71,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _logoutButton = Root.Q<Button>("log-out-button");
 
             _accountLabel = Root.Q<Label>("account-label");
-            _loginTitleLabel = Root.Q<Label>("anchor-link-title-label");
-            _subtitleLabel = Root.Q<Label>("anchor-link-subtitle-label");
 
             _toTextField = Root.Q<TextField>("to-account-text-field");
             _fromTextField = Root.Q<TextField>("from-account-text-field");
@@ -92,6 +89,8 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _sellRamBox = Root.Q<VisualElement>("sell-ram-box");
             _buyRamBox = Root.Q<VisualElement>("buy-ram-box");
             _bidNameBox = Root.Q<VisualElement>("bid-name-box");
+
+            UALUiToolkitExample.UnityUiToolkitUal.OnUserLogin += Rebind;
 
             BindButtons();
             SetTransferAccountText();
@@ -149,44 +148,34 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 _bidNameBox.Show();
             };
 
-            //_changeToRestoreSessionButton.clickable.clicked += async () =>
-            //{
-            //    try
-            //    {
-            //        await UiToolkitExample.RestoreSession();
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Debug.Log(e);
-            //        throw;
-            //    }
-            //};
 
-            //_transferTokenButton.clickable.clicked += async () =>
-            //{
-            //    var action = new Action
-            //    {
-            //        account = "eosio.token",
-            //        name = "transfer",
-            //        authorization = new List<PermissionLevel> { UALUiToolkitExample.UnityUiToolkitUal.OnUserLogin. },
-            //        data = new Dictionary<string, object>
-            //        {
-            //            { "from", UALUiToolkitExample.LinkSession.Auth.actor },
-            //            { "to", _toTextField.value },
-            //            { "quantity", _quantityTextField.value },
-            //            { "memo", _memoTextField.value }
-            //        }
-            //    };
-            //    try
-            //    {
-            //        await UALUiToolkitExample.UnityUiToolkitUal..Transfer(action);
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Debug.Log(e);
-            //        throw;
-            //    }
-            //};
+            _transferTokenButton.clickable.clicked += async () =>
+            {
+                var actor =  UALUiToolkitExample.User.GetAccountName().Result;
+
+                var action = new Action
+                {
+                    account = "eosio.token",
+                    name = "transfer",
+                    authorization = new List<PermissionLevel> {},
+                    data = new Dictionary<string, object>
+                    {
+                        { "from", actor },
+                        { "to", _toTextField.value },
+                        { "quantity", _quantityTextField.value },
+                        { "memo", _memoTextField.value }
+                    }
+                };
+                try
+                {
+                    await UALUiToolkitExample.Transact(action);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+                    throw;
+                }
+            };
 
             _buyRamButton.clickable.clicked += async () =>
             {
@@ -213,7 +202,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 };
                 try
                 {
-                    //await UALUiToolkitExample.SellOrBuyRam(action);
+                    await UALUiToolkitExample.Transact(action);
                 }
                 catch (Exception e)
                 {
@@ -247,7 +236,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 };
                 try
                 {
-                    //await UALUiToolkitExample.SellOrBuyRam(action);
+                    await UALUiToolkitExample.Transact(action);
                 }
                 catch (Exception e)
                 {
@@ -258,6 +247,8 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
             _bidButton.clickable.clicked += async () =>
             {
+                var actor = await UALUiToolkitExample.User.GetAccountName();
+
                 var action = new Action
                 {
                     account = "eosio",
@@ -273,16 +264,16 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                                 "............2" // ............2 will be resolved to the signing accounts authority
                         }
                     },
-                    //data = new Dictionary<string, object>
-                    //{
-                    //    { "newname", _nameToBidTextField.value },
-                    //    { "bidder", UiToolkitExample.LinkSession.Auth.actor },
-                    //    { "bid", _bidAmountTextField.value }
-                    //}
+                    data = new Dictionary<string, object>
+                    {
+                        { "newname", _nameToBidTextField.value },
+                        { "bidder", actor },
+                        { "bid", _bidAmountTextField.value }
+                    }
                 };
                 try
                 {
-                    //await UALUiToolkitExample.SellOrBuyRam(action);
+                    await UALUiToolkitExample.Transact(action);
                 }
                 catch (Exception e)
                 {
@@ -291,7 +282,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 }
             };
 
-            _voteButton.clickable.clicked += () =>
+            _voteButton.clickable.clicked += async () =>
             {
                 var producers = new List<string> { "liquidstudio" };
 
@@ -319,7 +310,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
                 try
                 {
-                    //UALUiToolkitExample.Vote(action);
+                    await UALUiToolkitExample.Transact(action);
                 }
                 catch (Exception e)
                 {
@@ -328,42 +319,44 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 }
             };
 
-            //_logoutButton.clickable.clicked += async () =>
-            //{
-            //    try
-            //    {
-            //        await UiToolkitExample.Logout();
-            //        Hide();
-            //        LoginView.Show();
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Debug.Log(e);
-            //        throw;
-            //    }
-            //};
+            _logoutButton.clickable.clicked += () =>
+            {
+                try
+                {
+                    UALUiToolkitExample.UnityUiToolkitUal.Init();
+                    Hide();
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+                    throw;
+                }
+            };
         }
 
         #endregion
 
         #region Rebind
-
-        public void Rebind()
+        private async void Rebind(User user)
         {
-            //_fromTextField.value = UiToolkitExample.LinkSession.Auth.actor;
+            User = user;
+            var accountName = await User.GetAccountName();
+
+            _fromTextField.value = accountName;
             _accountLabel.text = _fromTextField.value;
             _receiverAccountTextField.value = _fromTextField.value;
+
+            this.Show();
         }
 
         #endregion
 
         #region other
-
         private void SetTransferAccountText()
         {
             var toName = "???";
             var memoComment = "Anchor is the best! Thank you.";
-            var quantityAmount = "0.0000 EOS OR WAX";
+            var quantityAmount = "0.00001000 WAX";
 
             _toTextField.SetValueWithoutNotify(toName);
             _memoTextField.SetValueWithoutNotify(memoComment);
