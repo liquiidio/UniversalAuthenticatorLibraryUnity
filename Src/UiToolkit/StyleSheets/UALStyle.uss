@@ -72,4 +72,8 @@
 .close-view-button:hover {
     transition-duration: 0.3s;
     scale: 1.03 1.03;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0ca36137844b641fbe583ae125a47deae846e19e
