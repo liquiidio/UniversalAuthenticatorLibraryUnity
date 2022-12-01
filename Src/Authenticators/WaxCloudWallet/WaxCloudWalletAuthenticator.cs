@@ -70,7 +70,7 @@ public class WaxCloudWalletAuthenticator : Authenticator
     {
         _waxCloudWalletPlugin = new GameObject(nameof(WaxCloudWalletPlugin)).AddComponent<WaxCloudWalletPlugin>();
 
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE
         _waxCloudWalletPlugin.InitializeDesktop(WaxCloudWalletConfig.LocalPort, WaxCloudWalletConfig.SigningWebsiteUrl,
             WaxCloudWalletConfig.HostLocalWebsite, $"{Application.dataPath}/{WaxCloudWalletConfig.IndexHtmlPath}", $"{Application.dataPath}/{WaxCloudWalletConfig.WaxJsPath}");
 #elif UNITY_WEBGL
