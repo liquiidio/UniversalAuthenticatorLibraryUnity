@@ -1,8 +1,8 @@
 .wallet-box-item {
     margin-left: 3px;
     margin-right: 3px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding-right: 6px;
     padding-top: 1px;
     padding-bottom: 1px;
@@ -51,9 +51,9 @@
 }
 
 .close-view-button {
-    background-image: url('project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Assets/close%20(4).png?fileID=2800000&guid=b1150dfb2fa4d9142aab1adbbca2d789&type=3#close (4)');
-    width: 16px;
-    height: 16px;
+    background-image: url('project://database/Assets/Packages/universalauthenticatorlibrary/Assets/icons/blueClose.png?fileID=2800000&guid=d3c284f75d01d5a4ebdb041f70baeb60&type=3#blueClose');
+    width: 24px;
+    height: 24px;
     background-color: rgba(57, 134, 226, 0);
     border-left-color: rgba(255, 255, 255, 0);
     border-right-color: rgba(255, 255, 255, 0);
@@ -72,8 +72,4 @@
 .close-view-button:hover {
     transition-duration: 0.3s;
     scale: 1.03 1.03;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 0ca36137844b641fbe583ae125a47deae846e19e

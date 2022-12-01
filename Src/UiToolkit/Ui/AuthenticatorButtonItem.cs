@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
+namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
     public class AuthenticatorButtonItem : BasicControl
     {

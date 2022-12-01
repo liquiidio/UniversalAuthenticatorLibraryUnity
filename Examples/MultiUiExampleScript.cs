@@ -1,6 +1,7 @@
 using EosSharp.Core.Api.v1;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit;
 using UnityEngine;
 
 public class MultiUiExampleScript : MonoBehaviour

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
+namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
     [Serializable()]
     public class BasicControl : MonoBehaviour

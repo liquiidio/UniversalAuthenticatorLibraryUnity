@@ -1,9 +1,8 @@
-using Assets.Packages.AnchorLinkTransportSharp.Src.Transports.UiToolkit.Ui;
 using Unity.VisualScripting;
 using System;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrarySharp.Src.UiToolkit.Ui
+namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
     public class AuthenticatorsPanel : ScreenBase
     {
