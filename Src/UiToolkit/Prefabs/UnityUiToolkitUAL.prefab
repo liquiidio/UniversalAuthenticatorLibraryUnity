@@ -44,8 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3223d78d07469d446a001254a429f0ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AppName: liquiidtest
+  Chain:
+    ChainId: 1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4
+    RpcEndpoints:
+    - Protocol: 
+      Host: 
+      Port: 0
+      Path: 
+  UalOptions:
+    Identifier: liquiidtest
+    SignTransactionConfig:
+      Broadcast: 1
+      BlocksBehind: 3
+      ExpireSeconds: 60
   Authenticators:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  AuthenticatorsPanel: {fileID: 9024524051500272216, guid: cbcb33d8f85420f45b275e2741d67f0a, type: 3}
+  AuthenticatorButtonItem: {fileID: 9024524051500272217, guid: cbcb33d8f85420f45b275e2741d67f0a, type: 3}
