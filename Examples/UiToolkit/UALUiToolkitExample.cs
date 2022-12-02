@@ -28,7 +28,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit
         // transfer tokens using a session  
         public async Task Transact(EosSharp.Core.Api.v1.Action action)
         {
-            var transactResult = await User.SignTransaction(new []{action});
+            var transactResult = await User.SignTransaction(new []{ action });
         }
 
     }

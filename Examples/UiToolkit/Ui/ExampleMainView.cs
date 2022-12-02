@@ -52,7 +52,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
          */
         [SerializeField] internal UALUiToolkitExample UALUiToolkitExample;
 
-        public User User;
+        private User _user;
 
 
         private void Start()
@@ -148,7 +148,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 _bidNameBox.Show();
             };
 
-
             _transferTokenButton.clickable.clicked += async () =>
             {
                 var actor =  UALUiToolkitExample.User.GetAccountName().Result;
@@ -157,7 +156,17 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 {
                     account = "eosio.token",
                     name = "transfer",
-                    authorization = new List<PermissionLevel> {},
+                    authorization = new List<PermissionLevel> 
+                    {
+                        new() 
+                        {
+                            actor =
+                                "............1", // ............1 will be resolved to the signing accounts permission
+                            permission =
+                                "............2" // ............2 will be resolved to the signing accounts authority
+                        }
+                    },
+
                     data = new Dictionary<string, object>
                     {
                         { "from", actor },
@@ -166,6 +175,43 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                         { "memo", _memoTextField.value }
                     }
                 };
+                try
+                {
+                    await UALUiToolkitExample.Transact(action);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+                    throw;
+                }
+            };
+
+            _voteButton.clickable.clicked += async () =>
+            {
+                var producers = new List<string> { "liquidstudio" };
+
+                var action = new Action
+                {
+                    account = "eosio",
+                    name = "voteproducer",
+                    authorization = new List<PermissionLevel>
+                    {
+                        new()
+                        {
+                            actor =
+                                "............1", // ............1 will be resolved to the signing accounts permission
+                            permission =
+                                "............2" // ............2 will be resolved to the signing accounts authority
+                        }
+                    },
+                    data = new Dictionary<string, object>
+                    {
+                        { "voter", "............1" },
+                        { "proxy", "coredevproxy" },
+                        { "producers", producers.ToArray() }
+                    }
+                };
+
                 try
                 {
                     await UALUiToolkitExample.Transact(action);
@@ -282,43 +328,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                 }
             };
 
-            _voteButton.clickable.clicked += async () =>
-            {
-                var producers = new List<string> { "liquidstudio" };
-
-                var action = new Action
-                {
-                    account = "eosio",
-                    name = "voteproducer",
-                    authorization = new List<PermissionLevel>
-                    {
-                        new()
-                        {
-                            actor =
-                                "............1", // ............1 will be resolved to the signing accounts permission
-                            permission =
-                                "............2" // ............2 will be resolved to the signing accounts authority
-                        }
-                    },
-                    data = new Dictionary<string, object>
-                    {
-                        { "voter", "............1" },
-                        { "proxy", "coredevproxy" },
-                        { "producers", producers.ToArray() }
-                    }
-                };
-
-                try
-                {
-                    await UALUiToolkitExample.Transact(action);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(e);
-                    throw;
-                }
-            };
-
             _logoutButton.clickable.clicked += () =>
             {
                 try
@@ -339,12 +348,12 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         #region Rebind
         private async void Rebind(User user)
         {
-            User = user;
-            var accountName = await User.GetAccountName();
+            _user = user;
+            var accountName = await _user.GetAccountName();
 
             _fromTextField.value = accountName;
-            _accountLabel.text = _fromTextField.value;
-            _receiverAccountTextField.value = _fromTextField.value;
+            _accountLabel.text = accountName;
+            _receiverAccountTextField.value = accountName;
 
             this.Show();
         }
@@ -373,7 +382,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         private void SetBuyRamText()
         {
             var name = "";
-            var quantityAmount = "0.00000000 WAX";
+            var quantityAmount = "0.00001000 WAX";
 
             _receiverAccountTextField.SetValueWithoutNotify(name);
             _amountToBuyTextField.SetValueWithoutNotify(quantityAmount);
@@ -382,7 +391,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         private void SetBidNameText()
         {
             var name = "new name";
-            var amount = "0 WAX";
+            var amount = "0.00010000 WAX";
 
             _nameToBidTextField.SetValueWithoutNotify(name);
             _bidAmountTextField.SetValueWithoutNotify($"{amount}");
