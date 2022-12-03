@@ -1,0 +1,75 @@
+.wallet-box-item {
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 6px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    width: 330px;
+    height: 46.67px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    background-color: rgb(0, 0, 71);
+}
+
+.wallet-box-item:hover {
+    transition-duration: 0.3s;
+    scale: 1.03 1.03;
+    transition-timing-function: ease;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 10px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.wallet-text-box {
+    width: 280px;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info-icon {
+    width: 30px;
+    height: 30px;
+    background-image: url('project://database/Assets/Packages/UniversalAuthenticatorLibrarySharp/Assets/next.png?fileID=2800000&guid=845f052e4545ef34fa131dfcb9ae3a1c&type=3#next');
+    background-color: rgba(17, 17, 17, 0);
+}
+
+.close-view-button {
+    background-image: url('project://database/Assets/Packages/universalauthenticatorlibrary/Assets/icons/blueClose.png?fileID=2800000&guid=d3c284f75d01d5a4ebdb041f70baeb60&type=3#blueClose');
+    width: 24px;
+    height: 24px;
+    background-color: rgba(57, 134, 226, 0);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    scale: 1.2 1.2;
+    margin-right: 0;
+    transition-duration: 0.3s;
+    display: flex;
+    visibility: visible;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.close-view-button:hover {
+    transition-duration: 0.3s;
+    scale: 1.03 1.03;
+}

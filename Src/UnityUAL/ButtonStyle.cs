@@ -10,6 +10,6 @@ public class ButtonStyle
     /** Whatever is provided here will be set as the `src` attribute */
     public Sprite Icon;
     public string Text;
-    public Color32 TextColor;
-    public Color32 Background;
+    public Color TextColor;
+    public Color Background;
 }
