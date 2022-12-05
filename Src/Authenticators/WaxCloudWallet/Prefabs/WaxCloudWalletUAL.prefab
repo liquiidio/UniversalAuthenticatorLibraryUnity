@@ -47,12 +47,8 @@ MonoBehaviour:
   ButtonStyle:
     Icon: {fileID: 21300000, guid: 4147140822cfa604f9677764e3f580be, type: 3}
     Text: Wax Cloud Wallet
-    TextColor:
-      serializedVersion: 2
-      rgba: 4294967295
-    Background:
-      serializedVersion: 2
-      rgba: 4278190080
+    TextColor: {r: 1, g: 1, b: 1, a: 1}
+    Background: {r: 0.003921569, g: 0.003921569, b: 0.003921569, a: 1}
   WaxCloudWalletConfig:
     RpcAddress: https://wax.greymass.com
     TryAutoLogin: 1

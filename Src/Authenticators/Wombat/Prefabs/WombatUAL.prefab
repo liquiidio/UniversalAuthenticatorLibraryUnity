@@ -47,9 +47,5 @@ MonoBehaviour:
   ButtonStyle:
     Icon: {fileID: 21300000, guid: 85072361a77621a438781050a4fb08a6, type: 3}
     Text: Wombat
-    TextColor:
-      serializedVersion: 2
-      rgba: 4294967295
-    Background:
-      serializedVersion: 2
-      rgba: 4280762100
+    TextColor: {r: 1, g: 1, b: 1, a: 1}
+    Background: {r: 0.95686275, g: 0.24313726, b: 0.15294118, a: 1}
