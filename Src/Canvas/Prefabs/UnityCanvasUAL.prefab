@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -443,6 +443,7 @@ MonoBehaviour:
   - {fileID: 0}
   AuthenticatorButtonPrefab: {fileID: 4356649448431152522, guid: ce49c155e8125504aaa28253c777af78, type: 3}
   AuthenticatorButtonPanel: {fileID: 3666523332054489017}
+  AuthenticatorPanel: {fileID: 3666523331981134639}
 --- !u!1 &1811670681539439303
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +540,7 @@ GameObject:
   - component: {fileID: 3666523331981134637}
   - component: {fileID: 3666523331981134636}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: AuthenticatorPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1081,7 +1082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c2c4781985ba400418e77b2ba30645ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3653b099d1651e4287abb252e531509, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1104,7 +1105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1362,7 +1363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c2c4781985ba400418e77b2ba30645ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3653b099d1651e4287abb252e531509, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1385,7 +1386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
