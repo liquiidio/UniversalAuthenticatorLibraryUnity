@@ -13,7 +13,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit
         public User User;
         public UnityUiToolkitUAL UnityUiToolkitUal;
 
-        // Start is called before the first frame update
         void Start()
         {
             UnityUiToolkitUal.Init();

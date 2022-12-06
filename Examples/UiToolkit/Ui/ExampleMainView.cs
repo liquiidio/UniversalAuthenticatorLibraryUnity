@@ -363,7 +363,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         #region other
         private void SetTransferAccountText()
         {
-            var toName = "???";
+            var toName = "";
             var memoComment = "Anchor is the best! Thank you.";
             var quantityAmount = "0.00001000 WAX";
 
