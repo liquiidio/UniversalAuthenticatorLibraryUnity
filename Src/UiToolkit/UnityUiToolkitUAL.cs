@@ -23,10 +23,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
 
             foreach (var authenticator in authenticators)
             {
-                // Has Icon, Style, TextColor etc.
-                var buttonStyle = authenticator.GetStyle();
-
-                AuthenticatorsPanel.AuthenticatorButtonBox.Add(AuthenticatorsPanel.AuthenticatorButtonItem.Clone(buttonStyle, () =>
+                AuthenticatorsPanel.AuthenticatorButtonBox.Add(AuthenticatorsPanel.AuthenticatorButtonItem.Clone(authenticator.GetStyle(), () =>
                 {
                     LoginUser(authenticator);
                     AuthenticatorsPanel.Hide();
