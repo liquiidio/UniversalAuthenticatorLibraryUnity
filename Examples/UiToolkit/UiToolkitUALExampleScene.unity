@@ -733,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 5568680674799704786, guid: d5e196c296bd09d43804629902b575da, type: 3}
       propertyPath: authenticatorButtonItem
       value: 
-      objectReference: {fileID: 1228282108}
+      objectReference: {fileID: 0}
     - target: {fileID: 5568680674799704786, guid: d5e196c296bd09d43804629902b575da, type: 3}
       propertyPath: Authenticators.Array.data[0]
       value: 
@@ -757,17 +757,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1625224922938762205, guid: d5e196c296bd09d43804629902b575da, type: 3}
   m_PrefabInstance: {fileID: 1228282106}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1228282108 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5790161301705532973, guid: d5e196c296bd09d43804629902b575da, type: 3}
-  m_PrefabInstance: {fileID: 1228282106}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbfd94e07016b3a49895f135eccfbf6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1469124316
 GameObject:
   m_ObjectHideFlags: 0
