@@ -1,3 +1,5 @@
+using Assets.Packages.AnchorLinkTransportSharp.Src.Transports.Canvas;
+using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,6 +11,8 @@ public class UnityCanvasUAL : UnityUAL
     public GameObject AuthenticatorButtonPrefab;
 
     public RectTransform AuthenticatorButtonPanel;
+
+    public RectTransform AuthenticatorPanel;
 
     public UnityCanvasUAL(Chain chain, UALOptions ualOptions, List<Authenticator> authenticators) : base(chain, ualOptions, authenticators)
     {
@@ -35,6 +39,7 @@ public class UnityCanvasUAL : UnityUAL
 
             _newButton.GetComponent<Button>().onClick.AddListener(delegate
             {
+                AuthenticatorPanel.gameObject.SetActive(false);
                 LoginUser(authenticator);
             });
 

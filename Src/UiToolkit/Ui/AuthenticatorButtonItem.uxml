@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Packages/universalauthenticatorlibrary/Src/UiToolkit/StyleSheets/UALStyle.uss?fileID=7433441132597879392&amp;guid=e6d0b4a05511f724799cc048c9a5bb14&amp;type=3#UALStyle" />
+    <ui:VisualElement name="screen" style="width: 100%; height: 100%; align-items: center; justify-content: center;">
+        <ui:VisualElement name="authenticator-button-container" style="width: auto; height: auto; align-items: center; margin-top: 0; margin-bottom: 0; justify-content: center;">
+            <ui:VisualElement name="authenticator-box" class="wallet-box-item" style="flex-direction: row; margin-top: 10px; margin-bottom: 10px; background-color: rgb(14, 14, 17); height: 46.67px;">
+                <ui:VisualElement name="logo-icon" class="logo-icon" style="height: 100%;" />
+                <ui:VisualElement name="authenticator-text-container" class="wallet-text-box">
+                    <ui:Label text="wallet authenticator" display-tooltip-when-elided="true" name="authenticator-text" style="font-size: 20px; -unity-font-style: bold; color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="info-container" style="height: 100%; justify-content: center;">
+                    <ui:VisualElement name="info-icon" class="info-icon" style="background-image: url(&apos;project://database/Assets/Packages/universalauthenticatorlibrary/Assets/next.png?fileID=2800000&amp;guid=f284fd7c2ca460540bc7e3302f556141&amp;type=3#next&apos;);" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
