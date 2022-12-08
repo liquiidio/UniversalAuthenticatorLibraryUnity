@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -82,20 +83,19 @@ public abstract class UnityUAL : MonoBehaviour
 
     private void AttemptSessionLogin(Authenticator[] availableAuthenticators)
     {
-        var sessionExpiration = PlayerPrefs.GetString("UALJs.SESSION_EXPIRATION_KEY");
+        var sessionExpiration = PlayerPrefs.GetString(UalConstants.SESSION_EXPIRATION_KEY);
         if (sessionExpiration != null)
         {
             // clear session if it has expired and continue
             if (DateTime.TryParse(sessionExpiration, out var expiration) && expiration <= DateTime.Now)
             {
-                //localStorage.clear()
-                PlayerPrefs.DeleteKey(""); // TODO
+                ClearStorageKeys();
             }
             else
             {
-                var authenticatorName = PlayerPrefs.GetString("UALJs.SESSION_AUTHENTICATOR_KEY");
+                var authenticatorName = PlayerPrefs.GetString(UalConstants.SESSION_AUTHENTICATOR_KEY);
                 var sessionAuthenticator = Authenticators.FirstOrDefault(a => a.GetType().Name == authenticatorName);
-                var accountName = PlayerPrefs.GetString("UALJs.SESSION_ACCOUNT_NAME_KEY");
+                var accountName = PlayerPrefs.GetString(UalConstants.SESSION_ACCOUNT_NAME_KEY);
                 LoginUser(sessionAuthenticator, accountName);
             }
         }
@@ -110,10 +110,10 @@ public abstract class UnityUAL : MonoBehaviour
 
         var invalidateSeconds = ActiveAuthenticator.ShouldInvalidateAfter();
         var invalidateAt = DateTime.Now;
-        invalidateAt.AddSeconds(invalidateSeconds);
+        invalidateAt = invalidateAt.AddSeconds(invalidateSeconds);
 
-        PlayerPrefs.SetString("UALJs.SESSION_EXPIRATION_KEY", invalidateAt.ToString());
-        PlayerPrefs.SetString("UALJs.SESSION_AUTHENTICATOR_KEY", authenticator.GetType().Name);
+        PlayerPrefs.SetString(UalConstants.SESSION_EXPIRATION_KEY, invalidateAt.ToString(CultureInfo.InvariantCulture));
+        PlayerPrefs.SetString(UalConstants.SESSION_AUTHENTICATOR_KEY, authenticator.GetType().Name);
 
         try
         {
@@ -121,29 +121,46 @@ public abstract class UnityUAL : MonoBehaviour
             {
                 user = await authenticator.Login(accountName);
 
-                PlayerPrefs.SetString("UALJs.SESSION_ACCOUNT_NAME_KEY", accountName);
+                PlayerPrefs.SetString(UalConstants.SESSION_ACCOUNT_NAME_KEY, accountName);
             }
             else
             {
                 user = await authenticator.Login();
             }
 
-            // send our users back, this should be done different, within the Authenticator,
-            // likely in Update() to allow asynchronity of events
             OnUserLogin?.Invoke(user);
 
         }
         catch (Exception e)
         {
             Debug.LogError(e);
-            //this.clearStorageKeys()
+            ClearStorageKeys();
             throw e;
         }
 
         // reset our modal state if we're not autologged in (no dom is rendered for autologin)
         if (!this.IsAutologin)
         {
+            // TODO
             //this.dom!.reset()
         }
     }
+
+    private void ClearStorageKeys()
+    {
+        foreach (var key in UalConstants.Keys)
+        {
+            PlayerPrefs.DeleteKey(key);
+        }
+    }
+}
+
+public static class UalConstants
+{
+    public const string SESSION_ACCOUNT_NAME_KEY = "UALSharp.SESSION_ACCOUNT_NAME_KEY";
+    public const string SESSION_EXPIRATION_KEY = "UALSharp.SESSION_EXPIRATION_KEY";
+    public const string SESSION_AUTHENTICATOR_KEY = "UALSharp.SESSION_AUTHENTICATOR_KEY";
+
+    public static List<string> Keys => new List<string>()
+        { SESSION_ACCOUNT_NAME_KEY, SESSION_EXPIRATION_KEY, SESSION_AUTHENTICATOR_KEY };
 }

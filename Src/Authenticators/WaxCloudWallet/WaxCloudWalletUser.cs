@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AnchorLinkSharp;
-using Cysharp.Threading.Tasks;
+using Assets.Packages.eossharp.EosSharp.EosSharp.Unity3D;
 using EosSharp.Core;
 using EosSharp.Unity3D;
 using UnityEngine;
@@ -75,7 +75,7 @@ public class WaxCloudWalletUser : User
         int i = 0;
         while (_wcwSignEvent == null && _wcwErrorEvent != null && i < 200)
         {
-            await UniTask.Delay(100);
+            await AsyncHelper.Delay(100);
             i++;
         }
 

@@ -43,7 +43,6 @@ public class AnchorAuthenticator : Authenticator
 
     public override async Task<User> Login(string accountName = null)
     {
-        // TODO, do we need to set the Transport to active first?
         var session = await _link.RestoreSession(_identifier, new PermissionLevel()
         {
             actor = accountName,

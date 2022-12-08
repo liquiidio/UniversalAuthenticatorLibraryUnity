@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+using Assets.Packages.eossharp.EosSharp.EosSharp.Unity3D;
 using UnityEngine;
 
 [Serializable]
@@ -97,10 +97,10 @@ public class WaxCloudWalletAuthenticator : Authenticator
         int i = 0;
         while (_user == null && i < 200)
         {
-            await UniTask.Delay(100);
+            await AsyncHelper.Delay(100);
             i++;
         }
-        await UniTask.Delay(100);
+        await AsyncHelper.Delay(100);
 
         return _user;
     }

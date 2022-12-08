@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class WombatAuthenticator : Authenticator
@@ -32,7 +31,7 @@ public class WombatAuthenticator : Authenticator
         int i = 0;
         while (_user == null && i < 200)
         {
-            await UniTask.Delay(100);
+            await AsyncHelper.Delay(100);
             i++;
         }
 

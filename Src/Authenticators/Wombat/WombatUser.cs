@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+using Assets.Packages.eossharp.EosSharp.EosSharp.Unity3D;
 using EosSharp.Core;
 using EosSharp.Unity3D;
 using UnityEngine;
@@ -12,7 +12,7 @@ using Action = EosSharp.Core.Api.v1.Action;
 
 public class WombatUser : User
 {
-#if UNITY_WEBGL
+#if !UNITY_WEBGL
     private WombatPlugin _wombatPlugin;
     public string AccountName { get; }
 
@@ -31,8 +31,8 @@ public class WombatUser : User
         };
         _api = new EosApi(new EosConfigurator()
         {
-            ChainId = "",
-            HttpEndpoint = "",
+            ChainId = wombatPlugin.Network.ChainId,
+            HttpEndpoint = wombatPlugin.Network.HttpEndpoint
         },
         new EosSharp.Unity3D.HttpHandler()
         );
@@ -45,13 +45,11 @@ public class WombatUser : User
 
     public override async Task<string> GetChainId()
     {
-        // TODO
-        return "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4";
+        return _wombatPlugin.Network.ChainId;
     }
 
     public override async Task<string> GetKeys()
     {
-        // TODO
         return (await _api.GetAccount(new GetAccountRequest()
         {
             account_name = AccountName
@@ -75,7 +73,7 @@ public class WombatUser : User
         int i = 0;
         while (_wombatSignEvent == null && _wombatErrorEvent != null && i < 200)
         {
-            await UniTask.Delay(100);
+            await AsyncHelper.Delay(100);
             i++;
         }
 
