@@ -131,9 +131,6 @@ public class WombatUser : User
         }
     }
 #else
-
-#endif
-
     private string account;
     public WombatUser(string account, object wombatPlugin)
     {
@@ -164,4 +161,5 @@ public class WombatUser : User
     {
         throw new NotImplementedException("Wombat is not supported on Platforms other than WebGL");
     }
+#endif
 }
