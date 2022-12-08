@@ -7,7 +7,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
     public class AuthenticatorsPanel : ScreenBase
     {
-        [SerializeField] internal AuthenticatorButtonItem AuthenticatorButtonItem;
 
         /*
          * Child-Controls
@@ -20,6 +19,11 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
         private VisualElement _infoBox;
 
         public VisualElement AuthenticatorButtonBox;
+
+        /*
+         * Cloneable
+         */
+        [SerializeField] internal AuthenticatorButtonItem AuthenticatorButtonItem;
 
         private void Start()
         {

@@ -9,7 +9,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
     public class UnityUiToolkitUAL : UnityUAL
     {
         [SerializeField] internal AuthenticatorsPanel AuthenticatorsPanel;
-        //[SerializeField] internal AuthenticatorButtonItem AuthenticatorButtonItem;
 
         public UnityUiToolkitUAL(Chain chain, UALOptions ualOptions, List<Authenticator> authenticators) : base(chain,
             ualOptions, authenticators)

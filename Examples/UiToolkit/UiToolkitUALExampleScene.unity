@@ -750,6 +750,10 @@ PrefabInstance:
       propertyPath: Chain.RpcEndpoints.Array.data[0].Protocol
       value: https://api.wax.liquidstudios.io
       objectReference: {fileID: 0}
+    - target: {fileID: 5790161301705532975, guid: d5e196c296bd09d43804629902b575da, type: 3}
+      propertyPath: m_PanelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: b020259e68362e94a89207aeb7a2e8bc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5e196c296bd09d43804629902b575da, type: 3}
 --- !u!4 &1228282107 stripped
