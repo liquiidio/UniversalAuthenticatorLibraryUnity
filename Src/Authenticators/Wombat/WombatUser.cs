@@ -1,3 +1,4 @@
+using System;
 using EosSharp.Core.Api.v1;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,9 +8,11 @@ using Cysharp.Threading.Tasks;
 using EosSharp.Core;
 using EosSharp.Unity3D;
 using UnityEngine;
+using Action = EosSharp.Core.Api.v1.Action;
 
 public class WombatUser : User
 {
+#if UNITY_WEBGL
     private WombatPlugin _wombatPlugin;
     public string AccountName { get; }
 
@@ -31,11 +34,7 @@ public class WombatUser : User
             ChainId = "",
             HttpEndpoint = "",
         },
-#if UNITY_WEBGL
         new EosSharp.Unity3D.HttpHandler()
-#else
-        new HttpHandler()
-#endif
         );
     }
 
@@ -130,5 +129,39 @@ public class WombatUser : User
                 }
             };
         }
+    }
+#else
+
+#endif
+
+    private string account;
+    public WombatUser(string account, object wombatPlugin)
+    {
+        this.account = account;
+    }
+
+    public override Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)
+    {
+        throw new NotImplementedException("Wombat is not supported on Platforms other than WebGL");
+    }
+
+    public override Task<SignTransactionResponse> SignTransaction(Action[] actions, SignTransactionConfig config = null)
+    {
+        throw new NotImplementedException("Wombat is not supported on Platforms other than WebGL");
+    }
+
+    public override Task<string> GetAccountName()
+    {
+        throw new NotImplementedException("Wombat is not supported on Platforms other than WebGL");
+    }
+
+    public override Task<string> GetChainId()
+    {
+        throw new NotImplementedException("Wombat is not supported on Platforms other than WebGL");
+    }
+
+    public override Task<string> GetKeys()
+    {
+        throw new NotImplementedException("Wombat is not supported on Platforms other than WebGL");
     }
 }

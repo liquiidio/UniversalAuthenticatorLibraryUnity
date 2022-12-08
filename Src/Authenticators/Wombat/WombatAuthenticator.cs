@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class WombatAuthenticator : Authenticator
 {
+#if UNITY_WEBGL
     private WombatPlugin _wombatPlugin;
 
     private WombatUser _user;
@@ -51,9 +52,70 @@ public class WombatAuthenticator : Authenticator
 
     public override bool ShouldRender()
     {
-#if UNITY_WEBGL || UNITY_EDITOR
-        return true;        
-#endif
+        return true;
+    }
+
+#elif UNITY_EDITOR
+
+    public WombatAuthenticator(Chain chain, UALOptions options) : base(chain, options)
+    {
+        Init(chain, options);
+    }
+
+    public sealed override void Init(Chain chain, UALOptions options)
+    {
+    }
+
+    public override async Task<User> Login(string accountName = null)
+    {
+        Debug.Log("Wombat-Wallet can't be used on platforms other than WebGL, returning unusable Fake-User");
+        return new WombatUser("fake.user", null);
+    }
+
+    public override async Task Logout()
+    {
+        return;
+    }
+
+    public override bool ShouldAutoLogin()
+    {
         return false;
     }
+
+    public override bool ShouldRender()
+    {
+        return true;
+    }
+#else
+    public WombatAuthenticator(Chain chain, UALOptions options) : base(chain, options)
+    {
+        Init(chain, options);
+    }
+
+    public sealed override void Init(Chain chain, UALOptions options)
+    {
+        Debug.Log("Wombat-Wallet can't be used on platforms other than WebGL");
+    }
+
+    public override async Task<User> Login(string accountName = null)
+    {
+        return null;
+    }
+
+    public override async Task Logout()
+    {
+        return;
+    }
+
+    public override bool ShouldAutoLogin()
+    {
+        return false;
+    }
+
+    public override bool ShouldRender()
+    {
+        return false;
+    }
+#endif
+
 }
