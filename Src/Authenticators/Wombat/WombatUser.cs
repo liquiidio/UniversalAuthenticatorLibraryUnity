@@ -164,5 +164,10 @@ public class WombatUser : User
     {
         throw new NotImplementedException("Wombat is not supported on Platforms other than WebGL");
     }
+
+    public override string GetWalletType()
+    {
+        return "Wombat";
+    }
 #endif
 }
