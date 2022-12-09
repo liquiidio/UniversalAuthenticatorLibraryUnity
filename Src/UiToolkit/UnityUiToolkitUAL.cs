@@ -20,7 +20,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
             Debug.Log("AuthenticatorsPanel.Show()");
             AuthenticatorsPanel.Show();
             Debug.Log("AuthenticatorsPanel.AuthenticatorButtonBox.Clear()");
-            AuthenticatorsPanel.AuthenticatorButtonBox.Clear();
+            AuthenticatorsPanel.AuthenticatorButtonBox?.Clear();
 
             Debug.Log("foreach (var authenticator in authenticators)");
             foreach (var authenticator in authenticators)

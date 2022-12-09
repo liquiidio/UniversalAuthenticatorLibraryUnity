@@ -50,7 +50,7 @@ public abstract class UnityUAL : MonoBehaviour
      * is returned it will render the Auth Button and relevant DOM elements.
      *
      */
-    public async void Init()
+    public async Task Init()
     {
         foreach (var authenticator in Authenticators)
         {

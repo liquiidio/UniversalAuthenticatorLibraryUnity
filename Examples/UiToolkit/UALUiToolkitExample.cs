@@ -13,9 +13,9 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit
         public User User;
         public UnityUiToolkitUAL UnityUiToolkitUal;
 
-        void Start()
+        async void Start()
         {
-            UnityUiToolkitUal.Init();
+            await UnityUiToolkitUal.Init();
             UnityUiToolkitUal.OnUserLogin += UserLogin;
         }
 
