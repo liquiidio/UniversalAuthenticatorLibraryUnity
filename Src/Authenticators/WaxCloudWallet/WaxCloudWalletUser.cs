@@ -27,6 +27,7 @@ public class WaxCloudWalletUser : User
         {
             _wcwSignEvent = wcwSignEvent;
         };
+        // TODO
         _api = new EosApi(new EosConfigurator()
         {
             ChainId = "",
@@ -56,6 +57,11 @@ public class WaxCloudWalletUser : User
         {
             account_name = AccountName
         })).permissions.SingleOrDefault(p => p.perm_name == "active")?.required_auth.keys.First().key;
+    }
+
+    public override string GetWalletType()
+    {
+        return "Wax Cloud Wallet";
     }
 
     public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)

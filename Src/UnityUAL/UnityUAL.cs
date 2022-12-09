@@ -50,7 +50,7 @@ public abstract class UnityUAL : MonoBehaviour
      * is returned it will render the Auth Button and relevant DOM elements.
      *
      */
-    public void Init()
+    public async void Init()
     {
         foreach (var authenticator in Authenticators)
         {
@@ -66,13 +66,13 @@ public abstract class UnityUAL : MonoBehaviour
         if (authenticators.AutoLoginAuthenticator != null)
         {
             IsAutologin = true;
-            LoginUser(authenticators.AutoLoginAuthenticator);
+            await LoginUser(authenticators.AutoLoginAuthenticator);
             ActiveAuthenticator = authenticators.AutoLoginAuthenticator;
         }
         else
         {
             // check for existing session and resume if possible
-            AttemptSessionLogin(authenticators.AvailableAuthenticators);
+            await AttemptSessionLogin(authenticators.AvailableAuthenticators);
 
             CreateUalPanel(authenticators.AvailableAuthenticators);
         }
@@ -81,10 +81,10 @@ public abstract class UnityUAL : MonoBehaviour
     // override in Canvas/UiToolkit
     protected abstract void CreateUalPanel(Authenticator[] authenticators);
 
-    private void AttemptSessionLogin(Authenticator[] availableAuthenticators)
+    private async Task AttemptSessionLogin(Authenticator[] availableAuthenticators)
     {
         var sessionExpiration = PlayerPrefs.GetString(UalConstants.SESSION_EXPIRATION_KEY);
-        if (sessionExpiration != null)
+        if (!string.IsNullOrEmpty(sessionExpiration))
         {
             // clear session if it has expired and continue
             if (DateTime.TryParse(sessionExpiration, out var expiration) && expiration <= DateTime.Now)
@@ -96,12 +96,12 @@ public abstract class UnityUAL : MonoBehaviour
                 var authenticatorName = PlayerPrefs.GetString(UalConstants.SESSION_AUTHENTICATOR_KEY);
                 var sessionAuthenticator = Authenticators.FirstOrDefault(a => a.GetType().Name == authenticatorName);
                 var accountName = PlayerPrefs.GetString(UalConstants.SESSION_ACCOUNT_NAME_KEY);
-                LoginUser(sessionAuthenticator, accountName);
+                await LoginUser(sessionAuthenticator, accountName);
             }
         }
     }
 
-    internal async void LoginUser(Authenticator authenticator, string accountName = null)
+    internal async Task LoginUser(Authenticator authenticator, string accountName = null)
     {
         User user;
 

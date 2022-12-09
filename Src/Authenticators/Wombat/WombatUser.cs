@@ -56,6 +56,11 @@ public class WombatUser : User
         })).permissions.SingleOrDefault(p => p.perm_name == "active")?.required_auth.keys.First().key;
     }
 
+    public override string GetWalletType()
+    {
+        return "Wombat";
+    }
+
     public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)
     {
         _wombatPlugin.Sign(transaction.actions.ToArray());

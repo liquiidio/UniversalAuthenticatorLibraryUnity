@@ -21,6 +21,11 @@ public class ExampleUser : User
         throw new System.NotImplementedException();
     }
 
+    public override string GetWalletType()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)
     {
         throw new System.NotImplementedException();

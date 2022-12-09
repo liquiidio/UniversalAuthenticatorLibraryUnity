@@ -37,10 +37,11 @@ public class UnityCanvasUAL : UnityUAL
 
             _newButton.GetComponent<Image>().color = buttonStyle.Background;
 
-            _newButton.GetComponent<Button>().onClick.AddListener(delegate
+            _newButton.GetComponent<Button>().onClick.AddListener(async delegate
             {
                 AuthenticatorPanel.gameObject.SetActive(false);
-                LoginUser(authenticator);
+                //await authenticator.Login();
+                await LoginUser(authenticator);
             });
 
             // called when the specific Button is pressed

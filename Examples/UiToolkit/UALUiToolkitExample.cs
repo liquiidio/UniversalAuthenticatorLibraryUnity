@@ -19,9 +19,10 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit
             UnityUiToolkitUal.OnUserLogin += UserLogin;
         }
 
-        void UserLogin(User user)
+        private async void UserLogin(User user)
         {
             User = user;
+            Debug.Log($"User with account-name {await user.GetAccountName()} logged in with {user.GetWalletType()}");
         }
 
         // transfer tokens using a session  

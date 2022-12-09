@@ -32,6 +32,11 @@ public class AnchorUser : User
         return Session.PublicKey;
     }
 
+    public override string GetWalletType()
+    {
+        return "Anchor";
+    }
+
     public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction, SignTransactionConfig config = null)
     {
         return await Transact(null, null, transaction);

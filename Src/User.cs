@@ -39,6 +39,8 @@ public abstract class User
 
     public abstract Task<string> GetKeys();
 
+    public abstract string GetWalletType();
+
     //  protected returnEosjsTransaction(wasBroadcast: boolean, completedTransaction: any) : SignTransactionResponse {
     //    if (wasBroadcast) {
     //      if (completedTransaction.hasOwnProperty('transaction_id')) {

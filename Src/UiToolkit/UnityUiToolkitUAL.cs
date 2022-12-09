@@ -17,16 +17,25 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
 
         protected override void CreateUalPanel(Authenticator[] authenticators)
         {
+            Debug.Log("AuthenticatorsPanel.Show()");
             AuthenticatorsPanel.Show();
+            Debug.Log("AuthenticatorsPanel.AuthenticatorButtonBox.Clear()");
             AuthenticatorsPanel.AuthenticatorButtonBox.Clear();
 
+            Debug.Log("foreach (var authenticator in authenticators)");
             foreach (var authenticator in authenticators)
             {
-                AuthenticatorsPanel.AuthenticatorButtonBox.Add(AuthenticatorsPanel.AuthenticatorButtonItem.Clone(authenticator.GetStyle(), () =>
-                {
-                    LoginUser(authenticator);
-                    AuthenticatorsPanel.Hide();
-                }));
+                Debug.Log("AuthenticatorsPanel.AuthenticatorButtonItem.Clone()");
+                var authenticatorButton = AuthenticatorsPanel.AuthenticatorButtonItem.Clone(authenticator.GetStyle(),
+                    async () =>
+                    {
+                        AuthenticatorsPanel.Hide();
+                        await LoginUser(authenticator);
+                        //await authenticator.Login();
+                    });
+
+                Debug.Log("AuthenticatorsPanel.AuthenticatorButtonBox.Add()");
+                AuthenticatorsPanel.AuthenticatorButtonBox.Add(authenticatorButton);
             }
         }
     }

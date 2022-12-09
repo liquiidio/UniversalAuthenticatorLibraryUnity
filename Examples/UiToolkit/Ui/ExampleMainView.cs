@@ -90,7 +90,8 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _buyRamBox = Root.Q<VisualElement>("buy-ram-box");
             _bidNameBox = Root.Q<VisualElement>("bid-name-box");
 
-            UALUiToolkitExample.UnityUiToolkitUal.OnUserLogin += Rebind;
+            // TODO NoNoNo ... Can't assign multiple Methods so this overrides the Method assigned in UALUiToolkitExample
+            //UALUiToolkitExample.UnityUiToolkitUal.OnUserLogin += Rebind;
 
             BindButtons();
             SetTransferAccountText();
