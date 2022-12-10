@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Assets.Packages.eossharp.EosSharp.EosSharp.Unity3D;
 using UnityEngine;
 
 
@@ -52,6 +53,10 @@ public abstract class UnityUAL : MonoBehaviour
      */
     public async Task Init()
     {
+        // we need to wait a little until we can Init the UAL as the Authenticators need to Initialize first
+        // as alternative we could change the Script Execution Order
+        await AsyncHelper.Delay(500);
+
         foreach (var authenticator in Authenticators)
         {
             authenticator.Init(Chain, new UALOptions()
