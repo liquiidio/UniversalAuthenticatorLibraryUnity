@@ -24,8 +24,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
          * Cloneable
          */
         [SerializeField] internal AuthenticatorButtonItem AuthenticatorButtonItem;
-
-        private void Start()
+        void Awake()
         {
             _closeViewButton = Root.Q<Button>("close-view-button");
             _learnBox = Root.Q<VisualElement>("learn-box");

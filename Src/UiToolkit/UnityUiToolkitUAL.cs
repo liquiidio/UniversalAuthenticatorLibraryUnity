@@ -35,7 +35,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
                     });
 
                 Debug.Log("AuthenticatorsPanel.AuthenticatorButtonBox.Add()");
-                AuthenticatorsPanel.AuthenticatorButtonBox.Add(authenticatorButton);
+                AuthenticatorsPanel.AuthenticatorButtonBox?.Add(authenticatorButton);
             }
         }
     }
