@@ -4394,7 +4394,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &2075309432
 GameObject:
@@ -4575,6 +4575,10 @@ PrefabInstance:
       propertyPath: Authenticators.Array.data[2]
       value: 
       objectReference: {fileID: 993594595}
+    - target: {fileID: 3666523331982699818, guid: aa720d9d5b6176245962a4f1a70b8089, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3666523331982699819, guid: aa720d9d5b6176245962a4f1a70b8089, type: 3}
       propertyPath: m_Pivot.x
       value: 0
