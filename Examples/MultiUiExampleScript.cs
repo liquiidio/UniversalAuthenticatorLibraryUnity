@@ -1,11 +1,6 @@
 using EosSharp.Core.Api.v1;
-using System.Collections;
 using System.Collections.Generic;
-using AnchorLinkSharp;
-using Assets.Packages.AnchorLinkTransportSharp.Src;
-using Assets.Packages.AnchorLinkTransportSharp.Src.StorageProviders;
-using Assets.Packages.AnchorLinkTransportSharp.Src.Transports.UiToolkit;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit;
+using UniversalAuthenticatorLibrary.Src.UiToolkit;
 using UnityEngine;
 
 public class MultiUiExampleScript : MonoBehaviour
@@ -30,12 +25,7 @@ public class MultiUiExampleScript : MonoBehaviour
         _unityUal.Init();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // automatic call for after the user logs in to transfer tokens
     async void OnLoggedIn(User user)
     {
         _user = user;

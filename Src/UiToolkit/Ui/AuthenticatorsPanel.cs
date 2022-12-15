@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
+namespace UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
     public class AuthenticatorsPanel : ScreenBase
     {

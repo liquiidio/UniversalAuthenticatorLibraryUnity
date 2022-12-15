@@ -1,5 +1,5 @@
-using Assets.Packages.AnchorLinkTransportSharp.Src.Transports.Canvas;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
+using AnchorLinkTransportSharp.Src.Transports.Canvas;
+using UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;

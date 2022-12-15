@@ -1,5 +1,5 @@
 using System;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
+using UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EosSharp.Core.Api.v1;
@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Action = EosSharp.Core.Api.v1.Action;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
+namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 {
     public class ExampleMainView : ScreenBase
     {

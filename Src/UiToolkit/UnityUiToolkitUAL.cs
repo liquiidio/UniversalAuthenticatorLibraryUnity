@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
-using System;
+using UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
 using UnityEngine;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
+namespace UniversalAuthenticatorLibrary.Src.UiToolkit
 {
     public class UnityUiToolkitUAL : UnityUAL
     {
@@ -15,6 +13,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
         {
         }
 
+        // Show the authenticator panel and populate it with the declared authenticator prefabs 
         protected override void CreateUalPanel(Authenticator[] authenticators)
         {
             Debug.Log("AuthenticatorsPanel.Show()");

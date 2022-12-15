@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Assets.Packages.eossharp.EosSharp.EosSharp.Unity3D;
-using Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit;
+using eossharp.EosSharp.EosSharp.Unity3D;
+using UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui;
+using UniversalAuthenticatorLibrary.Src.UiToolkit;
 using EosSharp.Core.Api.v1;
 using UnityEngine;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit
+namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
 {
     public class UALUiToolkitExample : MonoBehaviour
     {

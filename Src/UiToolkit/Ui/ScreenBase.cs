@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
+namespace UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
     [RequireComponent(typeof(UIDocument))]
     public class ScreenBase : MonoBehaviour
