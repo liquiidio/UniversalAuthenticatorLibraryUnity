@@ -131,7 +131,7 @@ public class UALCanvasExample : MonoBehaviour
             name = "transfer",
             authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission

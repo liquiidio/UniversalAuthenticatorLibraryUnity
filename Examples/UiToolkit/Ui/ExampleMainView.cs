@@ -159,7 +159,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                     name = "transfer",
                     authorization = new List<PermissionLevel> 
                     {
-                        new() 
+                        new PermissionLevel() 
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -197,7 +197,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                     name = "voteproducer",
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -232,7 +232,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                     name = "buyram",
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -267,7 +267,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -303,7 +303,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
