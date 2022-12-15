@@ -85,7 +85,7 @@ public abstract class User
         if (!string.IsNullOrEmpty(endPoint.Path))
         {
             var separator = "/";
-            if (endPoint.Path.StartsWith('/'))
+            if (endPoint.Path.StartsWith("/"))
             {
                 separator = "";
             }
