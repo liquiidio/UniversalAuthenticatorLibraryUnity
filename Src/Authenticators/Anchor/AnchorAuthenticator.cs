@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.Packages.AnchorLinkTransportSharp.Src;
+using AnchorLinkTransportSharp.Src;
 using EosioSigningRequest;
 using EosSharp.Core.Api.v1;
 using UnityEngine;

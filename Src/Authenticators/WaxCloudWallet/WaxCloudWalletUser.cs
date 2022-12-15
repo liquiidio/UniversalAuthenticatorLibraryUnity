@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AnchorLinkSharp;
-using Assets.Packages.eossharp.EosSharp.EosSharp.Unity3D;
+using eossharp.EosSharp.EosSharp.Unity3D;
 using EosSharp.Core;
 using EosSharp.Unity3D;
 using UnityEngine;

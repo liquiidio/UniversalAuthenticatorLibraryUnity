@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Assets.Packages.eossharp.EosSharp.EosSharp.Unity3D;
+using eossharp.EosSharp.EosSharp.Unity3D;
 using UnityEngine;
 
 [Serializable]

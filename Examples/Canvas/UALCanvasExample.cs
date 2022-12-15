@@ -1,5 +1,5 @@
-using Assets.Packages.AnchorLinkTransportSharp.Src.Transports.Canvas;
-using Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit;
+using AnchorLinkTransportSharp.Src.Transports.Canvas;
+using UniversalAuthenticatorLibrary.Examples.UiToolkit;
 using EosSharp.Core.Api.v1;
 using System;
 using System.Collections;
