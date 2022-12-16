@@ -12,7 +12,7 @@ using Action = EosSharp.Core.Api.v1.Action;
 
 public class WombatUser : User
 {
-#if !UNITY_WEBGL
+#if UNITY_WEBGL
     private WombatPlugin _wombatPlugin;
     public string AccountName { get; }
 
