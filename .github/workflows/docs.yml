@@ -49,7 +49,7 @@ jobs:
             
             - name: copy files to gitbook-folder 
               shell: bash
-              run: cp -rf .github/workflows/documentation/md .github/workflows/documentation/gitbook/docs
+              run: cp -rf .github/workflows/documentation/md/. .github/workflows/documentation/gitbook/docs/
             
             - name: update gitbook repo
               shell: bash
