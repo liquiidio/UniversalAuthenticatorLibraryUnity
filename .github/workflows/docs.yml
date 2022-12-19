@@ -38,7 +38,7 @@ jobs:
             
             - name: convert doxygen xml to markdown with moxygen
               shell: bash
-              run: moxygen --classes --language=cpp --output=.github/workflows/documentation/md/%s.md .github/workflows/documentation/xml
+              run: moxygen --classes --language=cs --output=.github/workflows/documentation/md/%s.md .github/workflows/documentation/xml
             
             - name: Upload moxygen output to artifacts
               if: always()
