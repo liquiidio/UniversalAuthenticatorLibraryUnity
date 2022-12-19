@@ -1,6 +1,6 @@
 name : Build documents
 
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
     create-docs:    
        runs-on: ubuntu-18.04
