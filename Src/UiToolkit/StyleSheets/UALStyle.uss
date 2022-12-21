@@ -20,9 +20,8 @@
 }
 
 .wallet-box-item:hover {
-    transition-duration: 0.3s;
-    scale: 1.03 1.03;
-    transition-timing-function: ease;
+    width: 340px;
+    height: 50.67px;
 }
 
 .logo-icon {
@@ -59,9 +58,7 @@
     border-right-color: rgba(255, 255, 255, 0);
     border-top-color: rgba(255, 255, 255, 0);
     border-bottom-color: rgba(255, 255, 255, 0);
-    scale: 1.2 1.2;
     margin-right: 0;
-    transition-duration: 0.3s;
     display: flex;
     visibility: visible;
     position: absolute;
@@ -70,6 +67,6 @@
 }
 
 .close-view-button:hover {
-    transition-duration: 0.3s;
-    scale: 1.03 1.03;
+    width: 30px;
+    height: 30px;
 }
