@@ -20,7 +20,6 @@ public class UALCanvasExample : MonoBehaviour
 
     private User user;
 
-    // Start is called before the first frame update
     void Start()
     {
         UnityCanvasUAL.OnUserLogin += UserLogin;
@@ -88,7 +87,10 @@ public class UALCanvasExample : MonoBehaviour
         }
     }
 
-    // Gather data from the custom transfer UI panel
+    /// <summary>
+    /// Gather data from the custom transfer UI panel
+    /// </summary>
+    /// <param name="TransferDetailsPanel"></param>
     public async void TryTransferTokens(GameObject TransferDetailsPanel)
     {
         string _frmAcc = "";
