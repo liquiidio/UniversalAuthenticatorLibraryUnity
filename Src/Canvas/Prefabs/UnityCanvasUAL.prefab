@@ -370,7 +370,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &3666523331982699821
 MonoBehaviour:
@@ -438,7 +438,6 @@ MonoBehaviour:
       BlocksBehind: 3
       ExpireSeconds: 60
   Authenticators:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   AuthenticatorButtonPrefab: {fileID: 4356649448431152522, guid: ce49c155e8125504aaa28253c777af78, type: 3}
@@ -747,8 +746,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: To continue please select an option
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16b518469bbdb904a9e5e1df88b4662b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 16b518469bbdb904a9e5e1df88b4662b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -882,8 +881,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Learn more
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 16b518469bbdb904a9e5e1df88b4662b, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 16b518469bbdb904a9e5e1df88b4662b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

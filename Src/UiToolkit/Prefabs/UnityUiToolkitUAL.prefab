@@ -136,7 +136,6 @@ MonoBehaviour:
       BlocksBehind: 3
       ExpireSeconds: 60
   Authenticators:
-  - {fileID: 3875698331673242542, guid: 19cba96ab1c793d419e990e6005c3456, type: 3}
+  - {fileID: 7477725567536108711, guid: 19cba96ab1c793d419e990e6005c3456, type: 3}
   - {fileID: 8621893889864280347, guid: 9dcf9d5bee2b3994988f076eb659cedf, type: 3}
-  - {fileID: 5466776911558440667, guid: 852d72cfe1f0e5047b1dd8944eaa33ae, type: 3}
   AuthenticatorsPanel: {fileID: 1364181932270644840}

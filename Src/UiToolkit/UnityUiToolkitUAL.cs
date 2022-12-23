@@ -13,7 +13,10 @@ namespace UniversalAuthenticatorLibrary.Src.UiToolkit
         {
         }
 
-        // Show the authenticator panel and populate it with the declared authenticator prefabs 
+        /// <summary>
+        /// Show the authenticator panel and populate it with the declared authenticator prefabs 
+        /// </summary>
+        /// <param name="authenticators"></param>
         protected override void CreateUalPanel(Authenticator[] authenticators)
         {
             Debug.Log("AuthenticatorsPanel.Show()");
