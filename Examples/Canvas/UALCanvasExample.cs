@@ -1,163 +1,172 @@
 using AnchorLinkTransportSharp.Src.Transports.Canvas;
-using UniversalAuthenticatorLibrary.Examples.UiToolkit;
 using EosSharp.Core.Api.v1;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UniversalAuthenticatorLibrary.Src.UiToolkit;
 
-public class UALCanvasExample : MonoBehaviour
+namespace UniversalAuthenticatorLibrary.Examples.Canvas
 {
-    public UnityCanvasUAL UnityCanvasUAL;
-
-    public GameObject TransactionPanel;
-
-    private User user;
-
-    void Start()
+    public class UALCanvasExample : MonoBehaviour
     {
-        UnityCanvasUAL.OnUserLogin += UserLogin;
-        UnityCanvasUAL.Init();
+        public UnityCanvasUAL UnityCanvasUAL;
 
-        BindButtons();
-    }
+        public GameObject TransactionPanel;
 
-    private void BindButtons()
-    {
-        var _anchorCanvasTransport = (UnityCanvasUAL.Authenticators.First(_auth => _auth.GetType() == typeof(AnchorAuthenticator)) as AnchorAuthenticator).Transport as UnityCanvasTransport;
+        private User user;
 
-        _anchorCanvasTransport.LoginPanel.transform.Find("HeaderBorder/CloseLoginPanelButton").GetComponent<Button>().onClick.AddListener(delegate
+        void Start()
         {
-            _anchorCanvasTransport.DisableAllPanels();
-            ReturnToAuthenticatorSelection();
-        });
+            UnityCanvasUAL.OnUserLogin += UserLogin;
+            UnityCanvasUAL.Init();
 
-        _anchorCanvasTransport.LoadingPanel.transform.Find("HeaderBorder/CloseLoadingPanelButton").GetComponent<Button>().onClick.AddListener(delegate
-        {
-            _anchorCanvasTransport.DisableAllPanels();
-            ReturnToAuthenticatorSelection();
-        });
-
-        _anchorCanvasTransport.SignPanel.transform.Find("HeaderBorder/CloseSignPanelButton").GetComponent<Button>().onClick.AddListener(delegate
-        {
-            _anchorCanvasTransport.DisableAllPanels();
-            ReturnToAuthenticatorSelection();
-        });
-
-        _anchorCanvasTransport.SuccessPanel.transform.Find("HeaderBorder/CloseSuccessPanelButton").GetComponent<Button>().onClick.AddListener(delegate
-        {
-            _anchorCanvasTransport.DisableAllPanels();
-            ReturnToAuthenticatorSelection();
-        });
-
-        _anchorCanvasTransport.FailurePanel.transform.Find("HeaderBorder/CloseFailurePanelButton").GetComponent<Button>().onClick.AddListener(delegate
-        {
-            _anchorCanvasTransport.DisableAllPanels();
-            ReturnToAuthenticatorSelection();
-        });
-
-        _anchorCanvasTransport.TimeoutPanel.transform.Find("HeaderBorder/CloseTimeoutPanelButton").GetComponent<Button>().onClick.AddListener(delegate
-        {
-            _anchorCanvasTransport.DisableAllPanels();
-            ReturnToAuthenticatorSelection();
-        });
-    }
-
-    private void ReturnToAuthenticatorSelection()
-    {
-        TransactionPanel.SetActive(false);
-        UnityCanvasUAL.AuthenticatorPanel.gameObject.SetActive(true);
-    }
-
-    private void UserLogin(User _user)
-    {
-        user = _user;
-
-        if (UnityCanvasUAL.ActiveAuthenticator.GetType() == typeof(AnchorAuthenticator))
-        {
-            var _anchorCanvasTransport = (UnityCanvasUAL.ActiveAuthenticator as AnchorAuthenticator).Transport as UnityCanvasTransport;
-
-            _anchorCanvasTransport.SwitchToNewPanel(TransactionPanel);
+            BindButtons();
         }
-    }
 
-    /// <summary>
-    /// Gather data from the custom transfer UI panel
-    /// </summary>
-    /// <param name="TransferDetailsPanel"></param>
-    public async void TryTransferTokens(GameObject TransferDetailsPanel)
-    {
-        string _frmAcc = "";
-        string _toAcc = "";
-        string _qnty = "";
-        string _memo = "";
-
-        foreach (var _inputField in TransferDetailsPanel.GetComponentsInChildren<TMP_InputField>())
+        private void BindButtons()
         {
-            if (_inputField.name == "FromAccountInputField(TMP)")
-                _frmAcc = _inputField.text;
+            var _anchorCanvasTransport =
+                (UnityCanvasUAL.Authenticators.First(_auth => _auth.GetType() == typeof(AnchorAuthenticator)) as
+                    AnchorAuthenticator).Transport as UnityCanvasTransport;
 
-            else if (_inputField.name == "ToAccountInputField(TMP)")
-                _toAcc = _inputField.text;
+            _anchorCanvasTransport.LoginPanel.transform.Find("HeaderBorder/CloseLoginPanelButton")
+                .GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    _anchorCanvasTransport.DisableAllPanels();
+                    ReturnToAuthenticatorSelection();
+                });
 
-            else if (_inputField.name == "QuantityAccountInputField(TMP)")
+            _anchorCanvasTransport.LoadingPanel.transform.Find("HeaderBorder/CloseLoadingPanelButton")
+                .GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    _anchorCanvasTransport.DisableAllPanels();
+                    ReturnToAuthenticatorSelection();
+                });
+
+            _anchorCanvasTransport.SignPanel.transform.Find("HeaderBorder/CloseSignPanelButton").GetComponent<Button>()
+                .onClick.AddListener(delegate
+                {
+                    _anchorCanvasTransport.DisableAllPanels();
+                    ReturnToAuthenticatorSelection();
+                });
+
+            _anchorCanvasTransport.SuccessPanel.transform.Find("HeaderBorder/CloseSuccessPanelButton")
+                .GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    _anchorCanvasTransport.DisableAllPanels();
+                    ReturnToAuthenticatorSelection();
+                });
+
+            _anchorCanvasTransport.FailurePanel.transform.Find("HeaderBorder/CloseFailurePanelButton")
+                .GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    _anchorCanvasTransport.DisableAllPanels();
+                    ReturnToAuthenticatorSelection();
+                });
+
+            _anchorCanvasTransport.TimeoutPanel.transform.Find("HeaderBorder/CloseTimeoutPanelButton")
+                .GetComponent<Button>().onClick.AddListener(delegate
+                {
+                    _anchorCanvasTransport.DisableAllPanels();
+                    ReturnToAuthenticatorSelection();
+                });
+        }
+
+        private void ReturnToAuthenticatorSelection()
+        {
+            TransactionPanel.SetActive(false);
+            UnityCanvasUAL.AuthenticatorPanel.gameObject.SetActive(true);
+        }
+
+        private void UserLogin(User _user)
+        {
+            user = _user;
+
+            if (UnityCanvasUAL.ActiveAuthenticator.GetType() == typeof(AnchorAuthenticator))
             {
-                _qnty = $"{_inputField.text} WAX";
+                var _anchorCanvasTransport =
+                    (UnityCanvasUAL.ActiveAuthenticator as AnchorAuthenticator).Transport as UnityCanvasTransport;
 
-                _qnty = _qnty.Replace(",", ".");
+                _anchorCanvasTransport.SwitchToNewPanel(TransactionPanel);
             }
-            else if (_inputField.name == "MemoAccountInputField(TMP)")
-                _memo = _inputField.text;
         }
 
-        await Transfer
-        (
-            _frmAcc,
-            _toAcc,
-            _qnty,
-            _memo
-        );
-    }
-
-    private async Task Transfer(string frmAcc, string toAcc, string qnty, string memo)
-    {
-        var action = new EosSharp.Core.Api.v1.Action
+        /// <summary>
+        /// Gather data from the custom transfer UI panel
+        /// </summary>
+        /// <param name="TransferDetailsPanel"></param>
+        public async void TryTransferTokens(GameObject TransferDetailsPanel)
         {
-            account = "eosio.token",
-            name = "transfer",
-            authorization = new List<PermissionLevel>
-                    {
-                        new PermissionLevel()
-                        {
-                            actor =
-                                "............1", // ............1 will be resolved to the signing accounts permission
-                            permission =
-                                "............2" // ............2 will be resolved to the signing accounts authority
-                        }
-                    },
+            string _frmAcc = "";
+            string _toAcc = "";
+            string _qnty = "";
+            string _memo = "";
 
-            data = new Dictionary<string, object>
+            foreach (var _inputField in TransferDetailsPanel.GetComponentsInChildren<TMP_InputField>())
+            {
+                if (_inputField.name == "FromAccountInputField(TMP)")
+                    _frmAcc = _inputField.text;
+
+                else if (_inputField.name == "ToAccountInputField(TMP)")
+                    _toAcc = _inputField.text;
+
+                else if (_inputField.name == "QuantityAccountInputField(TMP)")
+                {
+                    _qnty = $"{_inputField.text} WAX";
+
+                    _qnty = _qnty.Replace(",", ".");
+                }
+                else if (_inputField.name == "MemoAccountInputField(TMP)")
+                    _memo = _inputField.text;
+            }
+
+            await Transfer
+            (
+                _frmAcc,
+                _toAcc,
+                _qnty,
+                _memo
+            );
+        }
+
+        private async Task Transfer(string frmAcc, string toAcc, string qnty, string memo)
+        {
+            var action = new EosSharp.Core.Api.v1.Action
+            {
+                account = "eosio.token",
+                name = "transfer",
+                authorization = new List<PermissionLevel>
+                {
+                    new PermissionLevel()
                     {
-                        { "from", frmAcc },
-                        { "to", toAcc},
-                        { "quantity", qnty},
-                        { "memo", memo }
+                        actor =
+                            "............1", // ............1 will be resolved to the signing accounts permission
+                        permission =
+                            "............2" // ............2 will be resolved to the signing accounts authority
                     }
-        };
-        try
-        {
-            await user.SignTransaction(new[] { action });
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
-            throw;
+                },
+
+                data = new Dictionary<string, object>
+                {
+                    {"from", frmAcc},
+                    {"to", toAcc},
+                    {"quantity", qnty},
+                    {"memo", memo}
+                }
+            };
+            try
+            {
+                await user.SignTransaction(new[] {action});
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+                throw;
+            }
         }
     }
 }

@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using eossharp.EosSharp.EosSharp.Unity3D;
-using UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui;
 using UniversalAuthenticatorLibrary.Src.UiToolkit;
-using EosSharp.Core.Api.v1;
 using UnityEngine;
 
 namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
