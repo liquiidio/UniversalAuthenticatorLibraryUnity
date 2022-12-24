@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UniversalAuthenticatorLibrary.Src.UiToolkit;
+using UniversalAuthenticatorLibrary.Src.Canvas;
 
 namespace UniversalAuthenticatorLibrary.Examples.Canvas
 {

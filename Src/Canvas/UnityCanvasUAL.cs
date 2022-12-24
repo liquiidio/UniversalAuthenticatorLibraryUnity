@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UniversalAuthenticatorLibrary.Src.UiToolkit
+namespace UniversalAuthenticatorLibrary.Src.Canvas
 {
     public class UnityCanvasUAL : UnityUAL
     {
