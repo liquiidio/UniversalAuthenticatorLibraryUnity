@@ -19,7 +19,7 @@ jobs:
         git config --global user.email 'github-bot@users.noreply.github.com'
         git checkout -b upm_uitoolkit                                            # checkout the branch
         git rm -r Examples/UiToolkit
-        git rm -r Examples/UiToolKit.meta
+        git rm Examples/UiToolKit.meta
         git rm -r .github
         git commit -am "removed workflow files"
         git push -u origin upm_uitoolkit --force                              # commit the branch
@@ -41,7 +41,7 @@ jobs:
         git config --global user.email 'github-bot@users.noreply.github.com'
         git checkout -b upm_canvas                                            # checkout the branch
         git rm -r Examples/Canvas
-        git rm -r Examples/Canvas.meta
+        git rm Examples/Canvas.meta
         git rm -r .github
         git commit -am "removed workflow files"
         git push -u origin upm_canvas --force                              # commit the branch
