@@ -1,6 +1,9 @@
 name: Deploy
 
-on: [push]
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+*'
 
 jobs:
   split-full-upm:
@@ -79,9 +82,9 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: 1.0.0
-          name: Release 1.0.0
-          body: Git download link https://github.com/liquiidio/WombatUnityWebGl.git#upm
+          tag: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
+          body: Git download link https://github.com/liquiidio/WombatUnityWebGl.git#upm_full
 
 
 
