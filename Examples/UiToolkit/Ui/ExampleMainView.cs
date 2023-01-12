@@ -90,9 +90,6 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _buyRamBox = Root.Q<VisualElement>("buy-ram-box");
             _bidNameBox = Root.Q<VisualElement>("bid-name-box");
 
-            // TODO NoNoNo ... Can't assign multiple Methods so this overrides the Method assigned in UALUiToolkitExample
-            //UALUiToolkitExample.UnityUiToolkitUal.OnUserLogin += Rebind;
-
             BindButtons();
             SetTransferAccountText();
             SetSellRamText();
@@ -347,7 +344,7 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         #endregion
 
         #region Rebind
-        private async void Rebind(User user)
+        public async void Rebind(User user)
         {
             _user = user;
             var accountName = await _user.GetAccountName();

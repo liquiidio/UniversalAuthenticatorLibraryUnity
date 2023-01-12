@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using UniversalAuthenticatorLibrary.Src.UiToolkit;
+using UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui;
 using UnityEngine;
 
 namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
@@ -8,11 +9,12 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
     {
         public User User;
         public UnityUiToolkitUAL UnityUiToolkitUal;
+        public ExampleMainView ExampleMainView;
 
         async void Start()
         {
             await UnityUiToolkitUal.Init();
-            UnityUiToolkitUal.OnUserLogin += UserLogin;
+            UnityUiToolkitUal.OnUserLogin += OnShowMainView;
         }
 
         private async void UserLogin(User user)
@@ -27,6 +29,10 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
             var transactResult = await User.SignTransaction(new []{ action });
         }
 
+        private void OnShowMainView(User user)
+        {
+            ExampleMainView.Rebind(user);
+        }
     }
 
 }
