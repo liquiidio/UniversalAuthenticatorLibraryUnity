@@ -43,6 +43,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
+        ref: unity_develop
         fetch-depth: 0
     - name: split upm_full branch
       run: |
@@ -63,6 +64,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
+        ref: unity_develop
         fetch-depth: 0
     - name: split upm_canvas branch
       run: |
@@ -85,6 +87,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
+        ref: unity_develop
         fetch-depth: 0
     - name: split upm_uitoolkit branch
       run: |
