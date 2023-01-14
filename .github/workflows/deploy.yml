@@ -24,7 +24,7 @@ jobs:
       - name: Make directory for our unity package
         run: mkdir a
       - name: Create Unity Package
-        uses: pCYSl5EDgo/create-unitypackage@master
+        uses: pCYSl5EDgo/create-unitypackage@v1.1.1
         with:
           package-path: 'a/io.liquiid.univeralauthenticatorlibrary.unitypackage'
           include-files: metaList
