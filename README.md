@@ -33,7 +33,7 @@ In your Unity project:
 
     ![image](https://user-images.githubusercontent.com/74650011/208429298-76fe1101-95f3-4ab0-bbd5-f0a32a1cc652.png)
 
- 3. Enter URL:  `https://github.com/endel/NativeWebSocket.git#upm`
+ 3. Enter URL:  `https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp.git#upm`
     // (!TODO!) ADD CORRECT LINK AND RELEVANT SCREENSHOT
 ---
 ### 2. Importing the Unity Package.
