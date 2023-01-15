@@ -11,7 +11,7 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 {
     public class ExampleMainView : ScreenBase
     {
-        /*
+        /**
          * Child-Controls
          */
         private Button _changeToBidNameButton;
@@ -47,7 +47,7 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
         private Label _accountLabel;
 
-        /*
+        /**
          * Fields, Properties
          */
         [SerializeField] internal UALUiToolkitExample UALUiToolkitExample;
