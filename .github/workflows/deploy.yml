@@ -15,9 +15,11 @@ jobs:
           fetch-depth: 0
       - name: Find all meta files
         run: |
+          git mv Assets temp
           mkdir Assets
           mkdir $PKG_ROOT
-          git mv Assets $PKG_ROOT
+          git mv temp $PKG_ROOT
+          git mv $PKG_ROOT/temp $PKG_ROOT/Assets
           git mv Assets.meta $PKG_ROOT
           git mv Examples $PKG_ROOT
           git mv Examples.meta $PKG_ROOT
