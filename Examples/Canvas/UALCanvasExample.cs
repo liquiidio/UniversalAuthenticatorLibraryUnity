@@ -20,10 +20,10 @@ namespace UniversalAuthenticatorLibrary.Examples.Canvas
 
         private User user;
 
-        void Start()
+        async void Start()
         {
+            await UnityCanvasUAL.Init();
             UnityCanvasUAL.OnUserLogin += UserLogin;
-            UnityCanvasUAL.Init();
 
             BindButtons();
         }
