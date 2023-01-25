@@ -15,6 +15,18 @@
       "email": "corvin@liquiid.io",
       "url": "https://www.liquiid.io"
     },
+    "samples": [
+      {
+        "displayName": "UiToolkit",
+        "description": "Usage example using UiToolkit",
+        "path": "Samples~/UiToolkit"
+      },
+      {
+        "displayName": "Canvas",
+        "description": "Usage example using Canvas",
+        "path": "Samples~/Canvas"
+      }
+     ],
     "keywords": [
       "univeral-authenticator-library",
       "univeralauthenticatorlibrary",

@@ -11,21 +11,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          ref: release_pipeline
           fetch-depth: 0
       - name: Find all meta files
         run: |
-          echo "Assets.meta" > metaList
-          echo "Examples.meta" > metaList
-          echo "Src.meta" > metaList
-          find Assets/ -name \*.meta >> metaList
-          find Examples/ -name \*.meta >> metaList
-          find Src/ -name \*.meta >> metaList
+          mkdir Assets
+          mkdir $PKG_ROOT
+          git mv Assets $PKG_ROOT
+          git mv Assets.meta $PKG_ROOT
+          git mv Examples $PKG_ROOT
+          git mv Examples.meta $PKG_ROOT
+          git mv Src $PKG_ROOT
+          git mv Src.meta $PKG_ROOT
+          git mv README.md $PKG_ROOT || true
+          git mv README.md.meta $PKG_ROOT || true
+          find $PKG_ROOT/ -name \*.meta >> metaList
+        env:
+          PKG_ROOT: Assets/UniversalAuthenticatorLibrarySharp
       - name: Make directory for our unity package
         run: mkdir a
       - name: Create Unity Package
         uses: pCYSl5EDgo/create-unitypackage@master
         with:
-          package-path: 'a/io.liquiid.univeralauthenticatorlibrarysharp.unitypackage'
+          package-path: 'a/univeralauthenticatorlibrarysharp.unitypackage'
           include-files: metaList
       - name: Upload package
         uses: actions/upload-artifact@v1
@@ -33,8 +41,8 @@ jobs:
           name: a
           path: ./a
   
-  split-full-upm:
-    name: split upm_full branch
+  split-upm:
+    name: split upm branch
     runs-on: ubuntu-20.04
     needs: pack-unitypackage
     if: github.event_name == 'push'
@@ -44,65 +52,21 @@ jobs:
       with:
         ref: unity_develop
         fetch-depth: 0
-    - name: split upm_full branch
+    - name: split upm branch
       run: |
-        git branch -d upm_full &> /dev/null || echo upm branch not found # recreate the upm branch each time
+        git branch -d upm &> /dev/null || echo upm branch not found # recreate the upm branch each time
         git config --global user.name 'github-bot'
         git config --global user.email 'github-bot@users.noreply.github.com'
-        git checkout -b upm_full                                            # checkout the branch
-        git rm -r .github
+        git checkout -b upm                                            # checkout the branch
+        git mv Examples Samples~
+        git rm Examples.meta || true
+        git rm -r .github || true
         git commit -am "removed workflow files"
-        git push -u origin upm_full --force                              # commit the branch
-
-  split-canvas-upm:
-    name: split upm_canvas branch
-    runs-on: ubuntu-20.04
-    needs: split-full-upm
-    if: github.event_name == 'push'
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        ref: unity_develop
-        fetch-depth: 0
-    - name: split upm_canvas branch
-      run: |
-        git branch -d upm_canvas &> /dev/null || echo upm branch not found # recreate the upm branch each time
-        git config --global user.name 'github-bot'
-        git config --global user.email 'github-bot@users.noreply.github.com'
-        git checkout -b upm_canvas                                            # checkout the branch
-        git rm Examples/UiToolkit.meta
-        git rm -r Examples/UiToolkit
-        git rm -r .github
-        git commit -am "removed workflow files"
-        git push -u origin upm_canvas --force                              # commit the branch
-  
-  split-uitoolkit-upm:
-    name: split upm_uitoolkit branch
-    runs-on: ubuntu-20.04
-    needs: split-canvas-upm
-    if: github.event_name == 'push'
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        ref: unity_develop
-        fetch-depth: 0
-    - name: split upm_uitoolkit branch
-      run: |
-        git branch -d upm_uitoolkit &> /dev/null || echo upm branch not found # recreate the upm branch each time
-        git config --global user.name 'github-bot'
-        git config --global user.email 'github-bot@users.noreply.github.com'
-        git checkout -b upm_uitoolkit                                            # checkout the branch
-        git rm -r Examples/Canvas
-        git rm Examples/Canvas.meta
-        git rm -r .github
-        git commit -am "removed workflow files"
-        git push -u origin upm_uitoolkit --force                              # commit the branch
+        git push -u origin upm --force                              # commit the branch
   
   release:
     runs-on: ubuntu-20.04
-    needs: split-uitoolkit-upm
+    needs: split-upm
     if: github.event_name == 'push'
     steps:
       - name: Checkout
@@ -114,7 +78,7 @@ jobs:
         uses: ncipollo/release-action@v1.12.0
         with:
           tag: 1.0.3
-          name: Release 1.0.2
+          name: Release 1.0.3
           body: ${{ env.VERSION }}
           makeLatest: true
       - name: Download unity package
@@ -128,7 +92,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_name: a/io.liquiid.univeralauthenticatorlibrarysharp.unitypackage # path + filename
+          asset_name: a/univeralauthenticatorlibrarysharp.unitypackage # path + filename
           
 
 
