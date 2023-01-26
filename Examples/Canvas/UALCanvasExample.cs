@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UniversalAuthenticatorLibrary.Src.Authenticators.Anchor;
 using UniversalAuthenticatorLibrary.Src.Canvas;
@@ -19,6 +20,7 @@ namespace UniversalAuthenticatorLibrary.Examples.Canvas
         public GameObject TransactionPanel;
 
         private User user;
+        [SerializeField]private EventSystem _canvasEventSystem;
 
         async void Start()
         {
@@ -81,6 +83,14 @@ namespace UniversalAuthenticatorLibrary.Examples.Canvas
         {
             TransactionPanel.SetActive(false);
             UnityCanvasUAL.AuthenticatorPanel.gameObject.SetActive(true);
+        }
+
+        /// <summary>Called when ctrl + v is pressed in browser (webgl)</summary>
+        /// <param name="pastedText">The pasted text.</param>
+        public void OnBrowserClipboardPaste(string pastedText)
+        {
+            if (_canvasEventSystem.currentSelectedGameObject?.GetComponent<TMP_InputField>() != null)
+                _canvasEventSystem.currentSelectedGameObject.GetComponent<TMP_InputField>().text = pastedText;
         }
 
         private void UserLogin(User _user)
