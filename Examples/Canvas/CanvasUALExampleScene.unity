@@ -4309,6 +4309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnityCanvasUAL: {fileID: 68450126}
   TransactionPanel: {fileID: 1056304382}
+  _canvasEventSystem: {fileID: 1920536234}
 --- !u!114 &1972115833
 MonoBehaviour:
   m_ObjectHideFlags: 0
