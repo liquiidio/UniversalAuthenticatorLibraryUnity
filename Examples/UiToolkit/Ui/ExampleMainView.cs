@@ -395,6 +395,47 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _bidAmountTextField.SetValueWithoutNotify($"{amount}");
         }
 
+        /// <summary>Called when ctrl + v is pressed in browser (webgl)</summary>
+        /// <param name="pastedText">The pasted text.</param>
+        public void OnBrowserClipboardPaste(string pastedText)
+        {
+            if (string.IsNullOrEmpty(pastedText))
+                return;
+
+            if (_nameToBidTextField != null && _nameToBidTextField.focusController.focusedElement == _nameToBidTextField)
+            {
+                _nameToBidTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_receiverAccountTextField != null && _receiverAccountTextField.focusController.focusedElement == _receiverAccountTextField)
+            {
+                _receiverAccountTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_toTextField != null && _toTextField.focusController.focusedElement == _toTextField)
+            {
+                _toTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_memoTextField != null && _memoTextField.focusController.focusedElement == _memoTextField)
+            {
+                _memoTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_quantityTextField != null && _quantityTextField.focusController.focusedElement == _quantityTextField)
+            {
+                _quantityTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_bidAmountTextField != null && _bidAmountTextField.focusController.focusedElement == _bidAmountTextField)
+            {
+                _bidAmountTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_amountToBuyTextField != null && _amountToBuyTextField.focusController.focusedElement == _amountToBuyTextField)
+            {
+                _amountToBuyTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_sellRamAmountTextField != null && _sellRamAmountTextField.focusController.focusedElement == _sellRamAmountTextField)
+            {
+                _sellRamAmountTextField.SetValueWithoutNotify(pastedText);
+            }
+        }
+
         #endregion
     }
 }
