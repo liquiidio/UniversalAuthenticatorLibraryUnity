@@ -27,17 +27,17 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         private Button _sellRamButton;
         private Button _logoutButton;
 
-        private TextField _toTextField;
-        private TextField _fromTextField;
-        private TextField _memoTextField;
-        private TextField _nameToBidTextField;
-        private TextField _quantityTextField;
-        private TextField _receiverAccountTextField;
-        private TextField _userAccountTextField;
-        private TextField _sellRamAmountTextField;
-        private TextField _amountToBuyTextField;
-        private TextField _amountWaxTextField;
-        private TextField _bidAmountTextField;
+        private static TextField _toTextField;
+        private static TextField _fromTextField;
+        private static TextField _memoTextField;
+        private static TextField _nameToBidTextField;
+        private static TextField _quantityTextField;
+        private static TextField _receiverAccountTextField;
+        private static TextField _userAccountTextField;
+        private static TextField _sellRamAmountTextField;
+        private static TextField _amountToBuyTextField;
+        private static TextField _amountWaxTextField;
+        private static TextField _bidAmountTextField;
 
         private VisualElement _sellRamBox;
         private VisualElement _transferTokenBox;
@@ -397,7 +397,7 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
         /// <summary>Called when ctrl + v is pressed in browser (webgl)</summary>
         /// <param name="pastedText">The pasted text.</param>
-        public void OnBrowserClipboardPaste(string pastedText)
+        public static void OnBrowserClipboardPaste(string pastedText)
         {
             if (string.IsNullOrEmpty(pastedText))
                 return;
