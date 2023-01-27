@@ -9,7 +9,7 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
     {
         public User User;
         public UnityUiToolkitUAL UnityUiToolkitUal;
-        public ExampleMainView ExampleMainView;
+        public UALExamplePanel UalExamplePanel;
 
         async void Start()
         {
@@ -31,7 +31,7 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
 
         private void OnShowMainView(User user)
         {
-            ExampleMainView.Rebind(user);
+            UalExamplePanel.Rebind(user);
         }
     }
 

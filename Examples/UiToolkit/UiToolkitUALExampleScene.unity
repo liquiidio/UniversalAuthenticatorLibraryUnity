@@ -199,7 +199,6 @@ GameObject:
   m_Component:
   - component: {fileID: 467823280}
   - component: {fileID: 467823279}
-  - component: {fileID: 467823278}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -207,14 +206,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &467823278
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467823277}
-  m_Enabled: 1
 --- !u!20 &467823279
 Camera:
   m_ObjectHideFlags: 0
@@ -390,7 +381,7 @@ GameObject:
   - component: {fileID: 784811162}
   - component: {fileID: 784811161}
   m_Layer: 0
-  m_Name: ExampleMainView
+  m_Name: UALExamplePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,7 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnityUiToolkitUal: {fileID: 5568680673846411816}
-  ExampleMainView: {fileID: 784811161}
+  UalExamplePanel: {fileID: 0}
 --- !u!4 &1625224921981811495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6069075826312227737, guid: d5e196c296bd09d43804629902b575da, type: 3}
