@@ -85,12 +85,22 @@ namespace UniversalAuthenticatorLibrary.Examples.Canvas
             UnityCanvasUAL.AuthenticatorPanel.gameObject.SetActive(true);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.Tab))
+            {
+                OnBrowserClipboardPaste("Working as intended!");
+            }
+        }
+
         /// <summary>Called when ctrl + v is pressed in browser (webgl)</summary>
         /// <param name="pastedText">The pasted text.</param>
         public void OnBrowserClipboardPaste(string pastedText)
         {
             if (_canvasEventSystem.currentSelectedGameObject?.GetComponent<TMP_InputField>() != null)
                 _canvasEventSystem.currentSelectedGameObject.GetComponent<TMP_InputField>().text = pastedText;
+
+            print("This function to paste is being called!");
         }
 
         private void UserLogin(User _user)
