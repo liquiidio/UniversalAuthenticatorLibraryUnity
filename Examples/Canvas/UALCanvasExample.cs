@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UniversalAuthenticatorLibrary.Src.Authenticators.Anchor;
 using UniversalAuthenticatorLibrary.Src.Canvas;
@@ -24,6 +25,9 @@ namespace UniversalAuthenticatorLibrary.Examples.Canvas
 
         async void Start()
         {
+            if (SceneManager.sceneCount > 1)
+                UnityCanvasUAL.AuthenticatorPanel.GetComponentInChildren<Button>().gameObject.SetActive(false);
+
             await UnityCanvasUAL.Init();
             UnityCanvasUAL.OnUserLogin += UserLogin;
 
