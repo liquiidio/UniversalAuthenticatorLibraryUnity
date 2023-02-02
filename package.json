@@ -1,0 +1,36 @@
+{
+    "name": "io.liquiid.univeralauthenticatorlibrary",
+    "version": "1.0.2",
+    "displayName": "Univeral Authenticator Library",
+    "description": "Univeral Authenticator Library",
+    "unity": "2019.1",
+    "documentationUrl": "https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp",
+    "changelogUrl": "https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp",
+    "licensesUrl": "https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp",
+    "dependencies": {
+      "com.unity.nuget.newtonsoft-json": "3.0.0"
+    },
+    "author": {
+      "name": "Corvin Meyer auf der Heide",
+      "email": "corvin@liquiid.io",
+      "url": "https://www.liquiid.io"
+    },
+    "samples": [
+      {
+        "displayName": "UiToolkit",
+        "description": "Usage example using UiToolkit",
+        "path": "Samples~/UiToolkit"
+      },
+      {
+        "displayName": "Canvas",
+        "description": "Usage example using Canvas",
+        "path": "Samples~/Canvas"
+      }
+     ],
+    "keywords": [
+      "univeral-authenticator-library",
+      "univeralauthenticatorlibrary",
+      "univeral-authenticator-library-sharp",
+      "univeralauthenticatorlibrarysharp"
+    ]
+  }
