@@ -88,6 +88,7 @@ Endpoints have its own set of parameters that you may build up and pass in to th
    UnityCanvasUAL.OnUserLogin += UserLogin;
    await UnityCanvasUAL.Init();
 ```
+
 ## UI Toolkit
 
 1. In a Unity scene, add the authenticator handler prefab i.e. [UIToolkit](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/blob/upm_full/Src/UiToolkit/Prefabs/UnityUiToolkitUAL.prefab) .
