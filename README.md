@@ -12,7 +12,7 @@
 
 A native UAL allowing the use of supported SignatureProviders, similar to the js-based UAL allowing developers and users the same interaction flow and UI/UX on all different platforms. The priority of this plugin is for user and developer experience, while building the same base with extension-capabilities allowing to support additional SignatureProviders like Wombat, MetaMask, AIKON, other Wallets or SideChain-Auth in the future.
 
-# Installation (!TODO!)
+# Installation 
 
 **_Requires Unity 2019.1+ with .NET 4.x+ Runtime_**
 
@@ -33,8 +33,7 @@ In your Unity project:
 
     ![image](https://user-images.githubusercontent.com/74650011/208429298-76fe1101-95f3-4ab0-bbd5-f0a32a1cc652.png)
 
- 3. Enter URL:  `https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp.git#upm_full`
-    // (!TODO!) ADD CORRECT LINK AND RELEVANT SCREENSHOT
+ 3. Enter URL:  `https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp.git#upm`
 ---
 ### 2. Importing the Unity Package.
 Download the UnityPackage here <<-- (Hyper link this). Then in your Unity project:
@@ -43,72 +42,109 @@ Download the UnityPackage here <<-- (Hyper link this). Then in your Unity projec
     
     ![image](https://user-images.githubusercontent.com/74650011/208430044-caf91dd9-111e-4224-8441-95d116dbec3b.png)
 
- 3. Navigate to where you downloaded the file and open it.
-    
-    ![image](https://user-images.githubusercontent.com/74650011/208430782-871b64c5-fa00-44bf-96c3-685743b77a63.png)
+ 2. Navigate to where you downloaded the file and open it.
+ 
+    ![image](https://user-images.githubusercontent.com/86061433/217196170-c3bd43cb-488c-4243-a992-8ae0ee9c15fe.jpg)
 
- 4. Check all the relevant files needed (if this is a first time import, just select ALL) and click on import.
-   (!TODO!)
-   // ADD THE CORRECT SCREENSHOT FOR IMPORT WINDOW
+
+ 3. Check all the relevant files needed (if this is a first time import, just select ALL) and click on import.
+ 
    
-   ![image](https://user-images.githubusercontent.com/74650011/208431004-953e07d1-325d-4e9a-a4e1-fc845de06fdd.png)
+     ![image](https://user-images.githubusercontent.com/86061433/217196421-7524f5e9-d0af-4d6e-9e42-3a16e34cd4a7.jpg)
+     
+---
+
+### 3. Install manually. 
+Download this project there here. Then in your Unity project:
+
+ 1. Copy the sources from `UniversalAuthenticatorLibrarySharp` into your `Assets` directory.
 
 ---
-### 3. Install manually. (!TODO!)
-Download this project there here <<-- (Hyper link this to the zip download). Then in your Unity project:
 
- 1. Copy the sources from `NativeWebSocket/Assets/WebSocket` into your `Assets` directory.
-
----
-### 4. Install via NuGet (!TODO!)
-<img src="https://media.tenor.com/SLXlt36s35kAAAAC/scooby-doo-witch-doctor.gif" align="center"
-     alt="Liquiid logo">
 
 # Usage (!TODO!)
 
 .NET and Unity3D-compatible (Desktop, Mobile, WebGL) ApiClient for the different APIs. 
 Endpoints have its own set of parameters that you may build up and pass in to the relevant function.
 
-### Examples (!TODO!)
-
- Based on the different endpoints
- 
-```csharp
-    new AnchorLink(new LinkOptions()
-                {
-                    Transport = this.Transport,
-                    // Uncomment this for and EOS session
-                    //ChainId = "aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906",
-                    //Rpc = "https://eos.greymass.com",
-```
-<br>
-```csharp
-    // WAX session
-            ChainId = "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4",
-            Rpc = "https://api.wax.liquidstudios.io",
-            ZlibProvider = new NetZlibProvider(),
-            Storage = new PlayerPrefsStorage()
-        });
-```
 ---
-## Additional examples (!TODO!)
-These are examples based on the specific plugin/package usage.
-Achor link - Creating and signing different kinds of transactions.  
 
-### An example (!TODO!)
+# Examples 
 
-AnchorLink
+## Canvas 
 
-Token Transfer 
+1. In a Unity scene, add the Canvas authenticator handler prefab i.e. [Canvas](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/blob/upm_full/Src/Canvas/Prefabs/UnityCanvasUAL.prefab).
+
+2. Add the specific [authenticators](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/tree/upm_full/Src/Authenticators) that will be used e.g. [AnchorWallet](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/tree/upm_full/Src/Authenticators/Anchor/Prefabs) or [WAX Cloud Wallet](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/tree/upm_full/Src/Authenticators/WaxCloudWallet/Prefabs) as prefabs to the scene and specify them in the handler that was added in Step 1.
+
+3. Create a new script inheriting from MonoBehaviour, add a public member of type `UnityCanvasUAL` and assign it in the editor.
+
+4. In the Start-method, instantiate/initialize the handler prefab added above and add an action when the user login is successful.
+
+**N.B. Ensure that there is an assign event handler/callback for the login to get the `User` object. Click [here](https://liquiidio.gitbook.io/unity-plugin-suite/v/universalauthenticatorlibrary/examples/example_b) for more information.**
+
+#### Canvas 
 ```csharp
-    // transfer tokens using a session
-        private async Task Transfer(string frmAcc, string toAcc, string qnty, string memo)
+   UnityCanvasUAL.OnUserLogin += UserLogin;
+   await UnityCanvasUAL.Init();
+```
+## UI Toolkit
+
+1. In a Unity scene, add the authenticator handler prefab i.e. [UIToolkit](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/blob/upm_full/Src/UiToolkit/Prefabs/UnityUiToolkitUAL.prefab) .
+
+2. Add the specific [authenticators](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/tree/upm_full/Src/Authenticators) that will be used e.g. [AnchorWallet](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/tree/upm_full/Src/Authenticators/Anchor/Prefabs) or [WAX Cloud Wallet](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/tree/upm_full/Src/Authenticators/WaxCloudWallet/Prefabs) as prefabs to the scene and specify them in the handler that was added in Step 1.
+
+3. Create a new script inheriting from MonoBehaviour, add a public member of type `UnityUiToolkitUAL` and assign it in the editor.
+
+4. In the Start-method, instantiate/initialize the respective handler prefab added above and add an action when the user login is successful.
+
+**N.B. Ensure that there is an assign event handler/callback for the login to get the `User` object. Click [here](https://liquiidio.gitbook.io/unity-plugin-suite/v/universalauthenticatorlibrary/examples/example_b) for more information.**
+
+#### Canvas 
+```csharp
+   UnityCanvasUAL.OnUserLogin += UserLogin;
+   await UnityCanvasUAL.Init();
+```
+
+
+## User 
+
+To get the user that has logged in and to use the data to sign a transaction do the following:
+
+1. After setting up a scene as explained [here](https://liquiidio.gitbook.io/unity-plugin-suite/v/universalauthenticatorlibrary/examples/examples_getting_started), add a memeber of type `User`
+
+2. Create a new method (which should match the one called by the action in the [getting started](https://liquiidio.gitbook.io/unity-plugin-suite/v/universalauthenticatorlibrary/examples/examples_getting_started) section) and pass a `User` parameter.
+
+3. Then assign the parameter to the variable of type `User`.
+
+This is most effective when assigned as an event handler/callback .
+
+```csharp
+UnityXXXUal.OnUserLogin += [UserLoggedInMethod];
+```
+
+## Transfer tokens
+
+To perform a transfer action, do the following (ensure that you have a `User` member assigned as shown [here](https://liquiidio.gitbook.io/unity-plugin-suite/v/universalauthenticatorlibrary/examples/example_b):
+
+```csharp
+   public async Task Transfer(string frmAcc, string toAcc, string qnty, string memo)
         {
-            var action = new EosSharp.Core.Api.v1.Action()
+            var action = new EosSharp.Core.Api.v1.Action
             {
                 account = "eosio.token",
                 name = "transfer",
-                authorization = new List<PermissionLevel>() { _session.Auth },
+                authorization = new List<PermissionLevel>
+                {
+                    new PermissionLevel()
+                    {
+                        actor =
+                            "............1", // ............1 will be resolved to the signing accounts permission
+                        permission =
+                            "............2" // ............2 will be resolved to the signing accounts authority
+                    }
+                },
+
                 data = new Dictionary<string, object>
                 {
                     {"from", frmAcc},
@@ -117,19 +153,9 @@ Token Transfer
                     {"memo", memo}
                 }
             };
-
-            //Debug.Log($"Session {_session.Identifier}");
-            //Debug.Log($"Link: {_link.ChainId}");
-
             try
             {
-                var transactResult = await _link.Transact(new TransactArgs() { Action = action });
-                // OR (see next line)
-                //var transactResult = await _session.Transact(new TransactArgs() { Action = action });
-                Debug.Log($"Transaction broadcast! {transactResult.Processed}");
-
-                waitCoroutine = StartCoroutine(SwitchPanels(Transport.currentPanel, CustomActionsPanel, 1.5f));
-
+                await user.SignTransaction(new[] {action});
             }
             catch (Exception e)
             {
@@ -138,15 +164,14 @@ Token Transfer
             }
         }
 ```
-Link? (!TODO!)
+## Transaction
 
-- NFT Transfer - link
-- Create Permission - link
-- Get Balanaces - link
+To perform a generic transaction, do the following (ensure that you have a `User` member assigned as shown [here](https://liquiidio.gitbook.io/unity-plugin-suite/v/universalauthenticatorlibrary/examples/example_b):
 
+```csharp
+   public async Task Transact(EosSharp.Core.Api.v1.Action action)
+        {
+            var transactResult = await User.SignTransaction(new []{ action });
+        }
+```
 
-
-[build-badge]: https://github.com/mkosir/react-parallax-tilt/actions/workflows/build.yml/badge.svg
-[build-url]: https://github.com/mkosir/react-parallax-tilt/actions/workflows/build.yml
-[test-badge]: https://github.com/mkosir/react-parallax-tilt/actions/workflows/test.yml/badge.svg
-[test-url]: https://github.com/mkosir/react-parallax-tilt/actions/workflows/test.yml
