@@ -25,6 +25,8 @@ jobs:
           git mv Examples.meta $PKG_ROOT
           git mv Src $PKG_ROOT
           git mv Src.meta $PKG_ROOT
+          git mv UniversalAuthenticatorLibrary.asmdef $PKG_ROOT
+          git mv UniversalAuthenticatorLibrary.asmdef.meta $PKG_ROOT
           git mv README.md $PKG_ROOT || true
           git mv README.md.meta $PKG_ROOT || true
           find $PKG_ROOT/ -name \*.meta >> metaList
@@ -79,8 +81,8 @@ jobs:
         id: create_release
         uses: ncipollo/release-action@v1.12.0
         with:
-          tag: 1.0.8
-          name: Release 1.0.8
+          tag: 1.0.9
+          name: Release 1.0.9
           body: ${{ env.VERSION }}
           makeLatest: true
       - name: Download unity package
