@@ -6,9 +6,9 @@ namespace UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
     [RequireComponent(typeof(UIDocument))]
     public class ScreenBase : MonoBehaviour
     {
-        internal VisualElement Root;
+        public VisualElement Root;
 
-        internal UIDocument Screen;
+        public UIDocument Screen;
 
         private void Awake()
         {
