@@ -12,7 +12,6 @@ jobs:
   pack-unitypackage:
     runs-on: ubuntu-20.04
     name: Pack Unity Package
-    if: github.event_name == 'push'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -55,7 +54,6 @@ jobs:
     name: split upm branch
     runs-on: ubuntu-20.04
     needs: pack-unitypackage
-    if: github.event_name == 'push'
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -77,7 +75,6 @@ jobs:
   release:
     runs-on: ubuntu-20.04
     needs: split-upm
-    if: github.event_name == 'push'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
