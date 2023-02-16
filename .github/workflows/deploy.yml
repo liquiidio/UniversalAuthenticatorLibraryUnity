@@ -1,6 +1,12 @@
 name: Deploy
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      package_version:
+        description: 'Package version'
+        required: true
+        default: '1.0.0'
 
 jobs:
   pack-unitypackage:
@@ -81,9 +87,9 @@ jobs:
         id: create_release
         uses: ncipollo/release-action@v1.12.0
         with:
-          tag: 1.0.10
-          name: Release 1.0.10
-          body: ${{ env.VERSION }}
+          tag: ${{ github.event.inputs.package_version }}
+          name: Release ${{ github.event.inputs.package_version }}
+          body: ${{ github.event.inputs.package_version }}
           makeLatest: true
       - name: Download unity package
         uses: actions/download-artifact@v1
