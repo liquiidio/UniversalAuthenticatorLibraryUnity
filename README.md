@@ -19,7 +19,7 @@ A native UAL allowing the use of supported SignatureProviders, similar to the js
 This package can be included into your project by either:
 
  1. Installing the package via Unity's Package Manager (UPM) in the editor (recommended).
- 2. Importing the .unitypackage which you can download here.
+ 2. Importing the .unitypackage which you can download [here](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/releases/latest/download/universalauthenticatorlibrarysharp.unitypackage). 
  3. Manually add the files in this repo.
  4. Installing it via NuGet.
 ---
@@ -36,7 +36,10 @@ In your Unity project:
  3. Enter URL:  `https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp.git#upm`
 ---
 ### 2. Importing the Unity Package.
-Download the UnityPackage here <<-- (Hyper link this). Then in your Unity project:
+
+Download the [UnityPackage here](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/releases/latest/download/universalauthenticatorlibrarysharp.unitypackage). 
+
+Then in your Unity project:
 
  1. Open up the import a custom package window
     
@@ -55,9 +58,13 @@ Download the UnityPackage here <<-- (Hyper link this). Then in your Unity projec
 ---
 
 ### 3. Install manually. 
-Download this project there here. Then in your Unity project:
+Download this [project here](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/releases/latest).
 
- 1. Copy the sources from `UniversalAuthenticatorLibrarySharp` into your `Assets` directory.
+  * [zip](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/archive/refs/tags/1.0.12.zip)
+  * [tar.gz](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/archive/refs/tags/1.0.12.tar.gz) 
+
+Then in your Unity project, copy the sources from `UniversalAuthenticatorLibrarySharp` into your Unity `Assets` directory.
+
 
 ---
 
