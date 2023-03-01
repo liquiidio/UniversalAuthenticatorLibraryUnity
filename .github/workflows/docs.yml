@@ -1,0 +1,63 @@
+name : Build documents
+
+on: [workflow_dispatch]
+jobs:
+    create-docs:    
+       runs-on: ubuntu-18.04
+       container:
+            image: ghcr.io/liquiidio/docker-docs-generator:moxygen
+            credentials:
+               username: liquiidio
+               password: ${{secrets.GITHUB_TOKEN}} 
+       permissions:
+                contents: read
+                packages: write
+                pages: write      
+                id-token: write
+       steps:
+            - uses: actions/checkout@v3
+                    
+            - name: Checkout Gitbook Repo
+              uses: actions/checkout@v3
+              with:
+                repository: liquiidio/UnityPluginSuiteGitbook
+                token: ${{ secrets.FG_L_PAT }}
+                ref: universalauthenticatorlibrarysharp_auto
+                path: .github/workflows/documentation/gitbook
+                    
+            - name: generate docs with doxygen
+              shell: bash
+              run: doxygen .github/workflows/documentation/Doxyfile
+            
+            - name: Upload doxygen output to artifacts
+              if: always()
+              uses: actions/upload-artifact@v3
+              with:
+                name: Doxygen output
+                path:  .github/workflows/documentation/xml
+            
+            - name: convert doxygen xml to markdown with moxygen
+              shell: bash
+              run: moxygen --classes --language=cs --output=.github/workflows/documentation/md/%s.md .github/workflows/documentation/xml
+            
+            - name: Upload moxygen output to artifacts
+              if: always()
+              uses: actions/upload-artifact@v3
+              with:
+                name: Moxygen output
+                path:  .github/workflows/documentation/md
+            
+            - name: copy files to gitbook-folder 
+              shell: bash
+              run: cp -rf .github/workflows/documentation/md/. .github/workflows/documentation/gitbook/docs/
+            
+            - name: update gitbook repo
+              shell: bash
+              run: | 
+                cd .github/workflows/documentation/gitbook
+                git config --global user.email ${{secrets.USER_EMAIL}} 
+                git config --global user.name ${{secrets.USER_NAME}} 
+                git config --global --add safe.directory '*' 
+                git add .
+                git commit -m "updating generated files"
+                git push
