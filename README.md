@@ -8,6 +8,8 @@
      alt="Liquiid logo" width="300" height="300">
 </div>
 
+[![Build documents](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/docs.yml/badge.svg)](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/docs.yml)
+[![Deploy](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/deploy.yml/badge.svg)](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/deploy.yml)
 # Universal Authenticator Library Sharp (UAL)
 
 A native UAL allowing the use of supported SignatureProviders, similar to the js-based UAL allowing developers and users the same interaction flow and UI/UX on all different platforms. The priority of this plugin is for user and developer experience, while building the same base with extension-capabilities allowing to support additional SignatureProviders like Wombat, MetaMask, AIKON, other Wallets or SideChain-Auth in the future.
