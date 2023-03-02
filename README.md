@@ -8,6 +8,8 @@
      alt="Liquiid logo" width="300" height="300">
 </div>
 
+---
+
 <div align="center">
  
 [![Build documents](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/docs.yml/badge.svg)](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/docs.yml)
