@@ -116,7 +116,14 @@ namespace UniversalAuthenticatorLibrary.Examples.Canvas
                 var _anchorCanvasTransport =
                     (UnityCanvasUAL.ActiveAuthenticator as AnchorAuthenticator).Transport as UnityCanvasTransport;
 
+                _anchorCanvasTransport.DisableAllPanels();
+
                 _anchorCanvasTransport.SwitchToNewPanel(TransactionPanel);
+            }
+
+            else
+            {
+                TransactionPanel.SetActive(true); // Follow up on this
             }
         }
 
