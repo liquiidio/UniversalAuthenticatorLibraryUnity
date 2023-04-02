@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Assets.Packages.WcwUnity.Src;
 using eossharp.EosSharp.EosSharp.Unity3D;
 using UnityEngine;
 
