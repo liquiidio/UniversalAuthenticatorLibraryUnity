@@ -18,12 +18,12 @@ namespace UniversalAuthenticatorLibrary
         public Action<User> OnUserLogin;
 
         /**
-     * @param chains          A list of chains the dapp supports.
-     *
-     * @param appName         The name of the app using the authenticators
-     *
-     * @param authenticators  A list of authenticator apps that the dapp supports.
-     */
+         * @param chains          A list of chains the dapp supports.
+         *
+         * @param appName         The name of the app using the authenticators
+         *
+         * @param authenticators  A list of authenticator apps that the dapp supports.
+         */
         public UnityUAL(Chain chain, UALOptions ualOptions, List<Authenticator> authenticators)
         {
             Chain = chain;
@@ -35,9 +35,9 @@ namespace UniversalAuthenticatorLibrary
         public Authenticator ActiveAuthenticator { get; private set; }
 
         /**
-     * Returns an object with a list of initialized Authenticators that returned true for shouldRender()
-     * as well as an authenticator that supports autoLogin
-     */
+         * Returns an object with a list of initialized Authenticators that returned true for shouldRender()
+         * as well as an authenticator that supports autoLogin
+         */
         public AuthenticatorResponse GetAuthenticators()
         {
             return new AuthenticatorResponse()
@@ -48,10 +48,10 @@ namespace UniversalAuthenticatorLibrary
         }
 
         /**
-     * Initializes UAL: If a renderConfig was provided and no autologin authenticator
-     * is returned it will render the Auth Button and relevant DOM elements.
-     *
-     */
+         * Initializes UAL: If a renderConfig was provided and no autologin authenticator
+         * is returned it will render the Auth Button and relevant DOM elements.
+         *
+         */
         public async Task Init()
         {
             // we need to wait a little until we can Init the UAL as the Authenticators need to Initialize first

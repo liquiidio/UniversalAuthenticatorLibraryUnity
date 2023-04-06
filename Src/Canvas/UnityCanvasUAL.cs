@@ -44,12 +44,8 @@ namespace UniversalAuthenticatorLibrary.Src.Canvas
                 _newButton.GetComponent<Button>().onClick.AddListener(async delegate
                 {
                     AuthenticatorPanel.gameObject.SetActive(false);
-                    //await authenticator.Login();
                     await LoginUser(authenticator);
                 });
-
-                // called when the specific Button is pressed
-                //Action onClick = () => LoginUser(authenticator);  // Add this to button listener
             }
         }
     }

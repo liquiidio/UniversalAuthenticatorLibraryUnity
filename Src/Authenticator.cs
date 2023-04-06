@@ -8,8 +8,8 @@ namespace UniversalAuthenticatorLibrary
     public class Authenticator : MonoBehaviour
     {
         /**
-    * Default value for shouldInvalidateAfter(), 1 week in seconds
-    */
+        * Default value for shouldInvalidateAfter(), 1 week in seconds
+        */
         private uint defaultInvalidateAfter = 604800;
 
         [SerializeField] private ButtonStyle ButtonStyle;
@@ -41,35 +41,10 @@ namespace UniversalAuthenticatorLibrary
             Chain = chain;
             Options = options;
         }
-        //  /**
-        //   * Resets the authenticator to its initial, default state then calls init method
-        //   */
-        //  public abstract reset() : void
-
-        //  /**
-        //   * Returns true if the authenticator has errored while initializing.
-        //   */
-        //  public abstract isErrored() : boolean
-
-        //  /**
-        //   * Returns a URL where the user can download and install the underlying authenticator
-        //   * if it is not found by the UAL Authenticator.
-        //   */
-        //  public abstract getOnboardingLink() : string
-
-        //  /**
-        //   * Returns error (if available) if the authenticator has errored while initializing.
-        //   */
-        //  public abstract getError() : UALError | null
-
-        //  /**
-        //   * Returns true if the authenticator is loading while initializing its internal state.
-        //   */
-        //  public abstract isLoading() : boolean
 
         /**
-     * Returns the style of the Button that will be rendered.
-     */
+         * Returns the style of the Button that will be rendered.
+         */
         public ButtonStyle GetStyle() => ButtonStyle;
 
         //  /**
@@ -82,27 +57,21 @@ namespace UniversalAuthenticatorLibrary
         }
 
         /**
-     * Returns whether or not the dapp should attempt to auto login with the Authenticator app.
-     * Auto login will only occur when there is only one Authenticator that returns shouldRender() true and
-     * shouldAutoLogin() true.
-     */
+         * Returns whether or not the dapp should attempt to auto login with the Authenticator app.
+         * Auto login will only occur when there is only one Authenticator that returns shouldRender() true and
+         * shouldAutoLogin() true.
+         */
         public virtual bool ShouldAutoLogin()
         {
             throw new NotImplementedException();
         }
 
-        //  /**
-        //   * Returns whether or not the button should show an account name input field.
-        //   * This is for Authenticators that do not have a concept of account names.
-        //   */
-        //  public abstract shouldRequestAccountName() : Promise<boolean>
-
         /**
-     * Returns the amount of seconds after the authentication will be invalid for logging in on new
-     * browser sessions.  Setting this value to zero will cause users to re-attempt authentication on
-     * every new browser session.  Please note that the invalidate time will be saved client-side and
-     * should not be relied on for security.
-     */
+         * Returns the amount of seconds after the authentication will be invalid for logging in on new
+         * browser sessions.  Setting this value to zero will cause users to re-attempt authentication on
+         * every new browser session.  Please note that the invalidate time will be saved client-side and
+         * should not be relied on for security.
+         */
         public uint ShouldInvalidateAfter() => defaultInvalidateAfter;
 
         ///**
@@ -116,22 +85,11 @@ namespace UniversalAuthenticatorLibrary
         }
 
         /**
-     * Logs the user out of the dapp. This will be strongly dependent on each Authenticator app's patterns.
-     */
+         * Logs the user out of the dapp. This will be strongly dependent on each Authenticator app's patterns.
+         */
         public virtual Task Logout()
         {
             throw new NotImplementedException();
         }
-
-        //  /**
-        //   * Returns true if user confirmation is required for `getKeys`
-        //   */
-        //  public abstract requiresGetKeyConfirmation(): boolean
-
-        //  /**
-        //   * Returns the name of the authenticator.
-        //   */
-        //  public abstract getName(): string
-        //}
     }
 }
