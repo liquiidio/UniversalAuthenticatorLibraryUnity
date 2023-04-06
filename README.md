@@ -67,21 +67,10 @@ Then in your Unity project:
 ---
 
 ### 3. Install manually. 
-Download this [project here](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/releases/latest).
-
-  * [zip](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/archive/refs/tags/1.0.12.zip)
-  * [tar.gz](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/archive/refs/tags/1.0.12.tar.gz) 
+Download this [the latest Release](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/releases/latest).
 
 Then in your Unity project, copy the sources from `UniversalAuthenticatorLibrarySharp` into your Unity `Assets` directory.
 
-
----
-
-
-# Usage (!TODO!)
-
-.NET and Unity3D-compatible (Desktop, Mobile, WebGL) ApiClient for the different APIs. 
-Endpoints have its own set of parameters that you may build up and pass in to the relevant function.
 
 ---
 
