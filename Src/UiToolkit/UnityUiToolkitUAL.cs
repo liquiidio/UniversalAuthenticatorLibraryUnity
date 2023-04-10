@@ -1,36 +1,43 @@
-using System.Collections;
 using System.Collections.Generic;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
-using System;
+using UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
 using UnityEngine;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit
+namespace UniversalAuthenticatorLibrary.Src.UiToolkit
 {
     public class UnityUiToolkitUAL : UnityUAL
     {
         [SerializeField] internal AuthenticatorsPanel AuthenticatorsPanel;
-        [SerializeField] internal AuthenticatorButtonItem AuthenticatorButtonItem;
 
         public UnityUiToolkitUAL(Chain chain, UALOptions ualOptions, List<Authenticator> authenticators) : base(chain,
             ualOptions, authenticators)
         {
         }
 
+        /// <summary>
+        /// Show the authenticator panel and populate it with the declared authenticator prefabs 
+        /// </summary>
+        /// <param name="authenticators"></param>
         protected override void CreateUalPanel(Authenticator[] authenticators)
         {
+            Debug.Log("AuthenticatorsPanel.Show()");
             AuthenticatorsPanel.Show();
-            AuthenticatorsPanel.AuthenticatorButtonBox.Clear();
+            Debug.Log("AuthenticatorsPanel.AuthenticatorButtonBox.Clear()");
+            AuthenticatorsPanel.AuthenticatorButtonBox?.Clear();
 
+            Debug.Log("foreach (var authenticator in authenticators)");
             foreach (var authenticator in authenticators)
             {
-                // Has Icon, Style, TextColor etc.
-                var buttonStyle = authenticator.GetStyle();
+                Debug.Log("AuthenticatorsPanel.AuthenticatorButtonItem.Clone()");
+                var authenticatorButton = AuthenticatorsPanel.AuthenticatorButtonItem.Clone(authenticator.GetStyle(),
+                    async () =>
+                    {
+                        AuthenticatorsPanel.Hide();
+                        await LoginUser(authenticator);
+                        //await authenticator.Login();
+                    });
 
-                AuthenticatorsPanel.AuthenticatorButtonBox.Add(AuthenticatorButtonItem.Clone(buttonStyle, () =>
-                {
-                    LoginUser(authenticator);
-                    AuthenticatorsPanel.Hide();
-                }));
+                Debug.Log("AuthenticatorsPanel.AuthenticatorButtonBox.Add()");
+                AuthenticatorsPanel.AuthenticatorButtonBox?.Add(authenticatorButton);
             }
         }
     }

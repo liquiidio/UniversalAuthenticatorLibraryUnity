@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
+namespace UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
+    [Serializable()]
     public class AuthenticatorButtonItem : BasicControl
     {
         public VisualElement Clone(ButtonStyle buttonStyle, Action onClickAction)

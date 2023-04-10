@@ -1,5 +1,5 @@
 using System;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
+using UniversalAuthenticatorLibrary.Src.UiToolkit.Ui;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EosSharp.Core.Api.v1;
@@ -7,11 +7,11 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Action = EosSharp.Core.Api.v1.Action;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
+namespace UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 {
-    public class ExampleMainView : ScreenBase
+    public class UALExamplePanel : ScreenBase
     {
-        /*
+        /**
          * Child-Controls
          */
         private Button _changeToBidNameButton;
@@ -27,17 +27,17 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         private Button _sellRamButton;
         private Button _logoutButton;
 
-        private TextField _toTextField;
-        private TextField _fromTextField;
-        private TextField _memoTextField;
-        private TextField _nameToBidTextField;
-        private TextField _quantityTextField;
-        private TextField _receiverAccountTextField;
-        private TextField _userAccountTextField;
-        private TextField _sellRamAmountTextField;
-        private TextField _amountToBuyTextField;
-        private TextField _amountWaxTextField;
-        private TextField _bidAmountTextField;
+        private static TextField _toTextField;
+        private static TextField _fromTextField;
+        private static TextField _memoTextField;
+        private static TextField _nameToBidTextField;
+        private static TextField _quantityTextField;
+        private static TextField _receiverAccountTextField;
+        private static TextField _userAccountTextField;
+        private static TextField _sellRamAmountTextField;
+        private static TextField _amountToBuyTextField;
+        private static TextField _amountWaxTextField;
+        private static TextField _bidAmountTextField;
 
         private VisualElement _sellRamBox;
         private VisualElement _transferTokenBox;
@@ -47,7 +47,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
         private Label _accountLabel;
 
-        /*
+        /**
          * Fields, Properties
          */
         [SerializeField] internal UALUiToolkitExample UALUiToolkitExample;
@@ -89,8 +89,6 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _sellRamBox = Root.Q<VisualElement>("sell-ram-box");
             _buyRamBox = Root.Q<VisualElement>("buy-ram-box");
             _bidNameBox = Root.Q<VisualElement>("bid-name-box");
-
-            UALUiToolkitExample.UnityUiToolkitUal.OnUserLogin += Rebind;
 
             BindButtons();
             SetTransferAccountText();
@@ -158,7 +156,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                     name = "transfer",
                     authorization = new List<PermissionLevel> 
                     {
-                        new() 
+                        new PermissionLevel() 
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -196,7 +194,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                     name = "voteproducer",
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -231,7 +229,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
                     name = "buyram",
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -266,7 +264,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -302,7 +300,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
 
                     authorization = new List<PermissionLevel>
                     {
-                        new()
+                        new PermissionLevel()
                         {
                             actor =
                                 "............1", // ............1 will be resolved to the signing accounts permission
@@ -346,7 +344,7 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
         #endregion
 
         #region Rebind
-        private async void Rebind(User user)
+        public async void Rebind(User user)
         {
             _user = user;
             var accountName = await _user.GetAccountName();
@@ -397,6 +395,48 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui
             _bidAmountTextField.SetValueWithoutNotify($"{amount}");
         }
 
+        /// <summary>
+        /// Called when ctrl + v is pressed in browser (webgl)
+        /// </summary>
+        /// <param name="pastedText">The pasted text.</param>
+        public void OnBrowserClipboardPaste(string pastedText)
+        {
+            if (string.IsNullOrEmpty(pastedText))
+                return;
+
+            if (_nameToBidTextField != null && _nameToBidTextField.focusController.focusedElement == _nameToBidTextField)
+            {
+                _nameToBidTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_receiverAccountTextField != null && _receiverAccountTextField.focusController.focusedElement == _receiverAccountTextField)
+            {
+                _receiverAccountTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_toTextField != null && _toTextField.focusController.focusedElement == _toTextField)
+            {
+                _toTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_memoTextField != null && _memoTextField.focusController.focusedElement == _memoTextField)
+            {
+                _memoTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_quantityTextField != null && _quantityTextField.focusController.focusedElement == _quantityTextField)
+            {
+                _quantityTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_bidAmountTextField != null && _bidAmountTextField.focusController.focusedElement == _bidAmountTextField)
+            {
+                _bidAmountTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_amountToBuyTextField != null && _amountToBuyTextField.focusController.focusedElement == _amountToBuyTextField)
+            {
+                _amountToBuyTextField.SetValueWithoutNotify(pastedText);
+            }
+            else if (_sellRamAmountTextField != null && _sellRamAmountTextField.focusController.focusedElement == _sellRamAmountTextField)
+            {
+                _sellRamAmountTextField.SetValueWithoutNotify(pastedText);
+            }
+        }
         #endregion
     }
 }

@@ -1,27 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui;
-using Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit;
-using EosSharp.Core.Api.v1;
+using UniversalAuthenticatorLibrary.Src.UiToolkit;
+using UniversalAuthenticatorLibrary.Examples.UiToolkit.Ui;
 using UnityEngine;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit
+namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
 {
     public class UALUiToolkitExample : MonoBehaviour
     {
         public User User;
         public UnityUiToolkitUAL UnityUiToolkitUal;
+        public UALExamplePanel UalExamplePanel;
 
-        void Start()
+        async void Start()
         {
-            UnityUiToolkitUal.Init();
-            UnityUiToolkitUal.OnUserLogin += UserLogin;
+            await UnityUiToolkitUal.Init();
+            UnityUiToolkitUal.OnUserLogin += OnShowMainView;
         }
 
-        void UserLogin(User user)
+        private async void UserLogin(User user)
         {
             User = user;
+            Debug.Log($"User with account-name {await user.GetAccountName()} logged in with {user.GetWalletType()}");
         }
 
         // transfer tokens using a session  
@@ -30,6 +29,10 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Examples.UiToolkit
             var transactResult = await User.SignTransaction(new []{ action });
         }
 
+        private void OnShowMainView(User user)
+        {
+            UalExamplePanel.Rebind(user);
+        }
     }
 
 }

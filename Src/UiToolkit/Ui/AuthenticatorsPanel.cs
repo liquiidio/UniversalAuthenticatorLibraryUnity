@@ -1,11 +1,12 @@
-using Unity.VisualScripting;
 using System;
+using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
+namespace UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 {
     public class AuthenticatorsPanel : ScreenBase
     {
+
         /*
          * Child-Controls
          */
@@ -18,7 +19,11 @@ namespace Assets.Packages.UniversalAuthenticatorLibrary.Src.UiToolkit.Ui
 
         public VisualElement AuthenticatorButtonBox;
 
-        private void Start()
+        /*
+         * Cloneable
+         */
+        [SerializeField] internal AuthenticatorButtonItem AuthenticatorButtonItem;
+        void Start()
         {
             _closeViewButton = Root.Q<Button>("close-view-button");
             _learnBox = Root.Q<VisualElement>("learn-box");
