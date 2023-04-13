@@ -7,7 +7,7 @@ using UnityEngine;
 namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
 {
     [Serializable]
-    public class WaxCloudWalletConfig
+    public class CloudWalletConfig
     {
         [Space(20)] [Header("-----           WebGL Only           -----")] [Space(10)]
 
@@ -73,28 +73,28 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
         #endregion
     }
 
-    public class WaxCloudWalletAuthenticator : Authenticator
+    public class CloudWalletAuthenticator : Authenticator
     {
-        public WaxCloudWalletConfig WaxCloudWalletConfig;
+        public CloudWalletConfig CloudWalletConfig;
 
-        private WaxCloudWalletPlugin _waxCloudWalletPlugin;
+        private CloudWalletPlugin _waxCloudWalletPlugin;
 
-        private WaxCloudWalletUser _user;
+        private CloudWalletUser _user;
 
-        public WaxCloudWalletAuthenticator(Chain chain, UALOptions options) : base(chain, options)
+        public CloudWalletAuthenticator(Chain chain, UALOptions options) : base(chain, options)
         {
             Init(chain, options);
         }
 
         public sealed override void Init(Chain chain, UALOptions options)
         {
-            _waxCloudWalletPlugin = new GameObject(nameof(WaxCloudWalletPlugin)).AddComponent<WaxCloudWalletPlugin>();
+            _waxCloudWalletPlugin = new GameObject(nameof(CloudWalletPlugin)).AddComponent<CloudWalletPlugin>();
 
 #if UNITY_EDITOR || UNITY_STANDALONE
-            _waxCloudWalletPlugin.InitializeDesktop(WaxCloudWalletConfig.LocalPort,
-                WaxCloudWalletConfig.SigningWebsiteUrl,
-                WaxCloudWalletConfig.HostLocalWebsite, $"{Application.dataPath}/{WaxCloudWalletConfig.IndexHtmlPath}",
-                $"{Application.dataPath}/{WaxCloudWalletConfig.WaxJsPath}");
+            _waxCloudWalletPlugin.InitializeDesktop(CloudWalletConfig.LocalPort,
+                CloudWalletConfig.SigningWebsiteUrl,
+                CloudWalletConfig.HostLocalWebsite, $"{Application.dataPath}/{CloudWalletConfig.IndexHtmlPath}",
+                $"{Application.dataPath}/{CloudWalletConfig.WaxJsPath}");
 #elif UNITY_WEBGL
         _waxCloudWalletPlugin.InitializeWebGl(
             !string.IsNullOrEmpty(WaxCloudWalletConfig.RpcAddress)
@@ -108,7 +108,7 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
 #endif
             _waxCloudWalletPlugin.OnLoggedIn = loginEvent =>
             {
-                _user = new WaxCloudWalletUser(loginEvent.Account, _waxCloudWalletPlugin);
+                _user = new CloudWalletUser(loginEvent.Account, _waxCloudWalletPlugin);
             };
         }
 
