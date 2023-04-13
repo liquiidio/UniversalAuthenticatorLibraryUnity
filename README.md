@@ -85,7 +85,7 @@ Lastly it contains the functionallity allowing you and the AnchorLink-Library to
 
 *EosSharp installation*
 
-Follow the Instructions in [the AnchorLinkSharp Repository](https://github.com/liquiidio/EosSharp)
+Follow the Instructions in [the EosSharp Repository](https://github.com/liquiidio/EosSharp)
 
 *Or install the Package directly via UPM*
 Installing via Unity Package Manager (UPM).
