@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Assets.Packages.WcwUnity.Src;
+using Assets.Packages.CloudWalletUnity.Src;
 using eossharp.EosSharp.EosSharp.Unity3D;
 using UnityEngine;
 

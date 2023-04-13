@@ -1,7 +1,7 @@
 using EosSharp.Core.Api.v1;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.Packages.WcwUnity.Src;
+using Assets.Packages.CloudWalletUnity.Src;
 using eossharp.EosSharp.EosSharp.Unity3D;
 using EosSharp.Core;
 using EosSharp.Unity3D;
