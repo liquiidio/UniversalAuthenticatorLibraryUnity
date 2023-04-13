@@ -74,6 +74,55 @@ Then in your Unity project, copy the sources from `UniversalAuthenticatorLibrary
 
 ---
 
+
+# Dependencies
+None of the dependencies is contained in this Package and no matter which installation method you choose, you have to install it manually in addition to this Package.
+
+## EosSharp
+EosSharp is a library containing the necessary functionallity to serialize and deserialize Actions, Transactions, Blocks and other Data
+In addition it contains the necessary functionallity for all kinds of cryptographic operations
+Lastly it contains the functionallity allowing you and the AnchorLink-Library to access EOSIO or LEAP-based Nodes via their APIs.
+
+*EosSharp installation*
+
+Follow the Instructions in [the AnchorLinkSharp Repository](https://github.com/liquiidio/EosSharp)
+
+*Or install the Package directly via UPM*
+Installing via Unity Package Manager (UPM).
+In your Unity project:
+Open the Package Manager Window/Tab
+Click Add Package From Git URL
+Enter URL: https://github.com/liquiidio/EosSharp.git#upm
+
+
+## AnchorLinkSharp
+Allows users and developers to connect and communicate with Anchor Wallet and ESR-based applications. The Anchor & ESR Integration consists of multiple libraries for the ESR-Protocol, the Anchor-integration, Transports among others.
+
+*AnchorLinkSharp package installation*
+
+Follow the Instructions in [the AnchorLinkSharp Repository](https://github.com/liquiidio/AnchorLinkSharp)
+
+*Or install the Package directly via UPM*
+Installing via Unity Package Manager (UPM).
+In your Unity project:
+Open the Package Manager Window/Tab
+Click Add Package From Git URL
+Enter URL: https://github.com/liquiidio/AnchorLinkSharp.git#upm
+
+
+## WaxCloudWallet (WCW)
+A combination of local HttpListeners receiving OAuth-Callbacks from WCW-related web-adresses opened through the WebView-Plugin, gathering necessary initial information like OAuth-Tokens, followed by regular non-browser-based (non-WebView required) communication with the WCW-API/Server.
+
+*WCW package installation*
+Follow the Instructions in [the WCWUnity Repository](https://github.com/liquiidio/WcwUnity)
+
+*Or install the Package directly via UPM*
+Installing via Unity Package Manager (UPM).
+In your Unity project:
+Open the Package Manager Window/Tab
+Click Add Package From Git URL
+Enter URL: https://github.com/liquiidio/WcwUnity.git#upm
+
 # Examples 
 
 ## Canvas 
