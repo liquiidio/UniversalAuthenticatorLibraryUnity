@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4980,6 +4980,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1019263820}
     m_Modifications:
+    - target: {fileID: 8621893889864280347, guid: 9dcf9d5bee2b3994988f076eb659cedf, type: 3}
+      propertyPath: WaxCloudWalletConfig.TryAutoLogin
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8621893889864280348, guid: 9dcf9d5bee2b3994988f076eb659cedf, type: 3}
       propertyPath: m_RootOrder
       value: 0
