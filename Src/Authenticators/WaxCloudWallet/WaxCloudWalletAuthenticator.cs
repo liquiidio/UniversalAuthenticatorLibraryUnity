@@ -99,8 +99,7 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
         _waxCloudWalletPlugin.InitializeWebGl(
             !string.IsNullOrEmpty(WaxCloudWalletConfig.RpcAddress)
                 ? WaxCloudWalletConfig.RpcAddress
-                : chain.RpcEndpoints[0].HttpEndpoint, WaxCloudWalletConfig.TryAutoLogin,
-            WaxCloudWalletConfig.WaxSigningURL, WaxCloudWalletConfig.WaxAutoSigningURL);
+                : chain.RpcEndpoints[0].HttpEndpoint, WaxCloudWalletConfig.TryAutoLogin);
 #elif UNITY_ANDROID || UNITY_IOS
         _waxCloudWalletPlugin.InitializeMobile(WaxCloudWalletConfig.LocalPort, WaxCloudWalletConfig.SigningWebsiteUrl,
             WaxCloudWalletConfig.HostLocalWebsite, WaxCloudWalletConfig.IndexHtmlString,
