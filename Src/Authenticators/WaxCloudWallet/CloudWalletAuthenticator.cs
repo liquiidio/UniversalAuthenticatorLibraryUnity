@@ -97,13 +97,13 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
                 $"{Application.dataPath}/{CloudWalletConfig.WaxJsPath}");
 #elif UNITY_WEBGL
         _waxCloudWalletPlugin.InitializeWebGl(
-            !string.IsNullOrEmpty(WaxCloudWalletConfig.RpcAddress)
-                ? WaxCloudWalletConfig.RpcAddress
-                : chain.RpcEndpoints[0].HttpEndpoint, WaxCloudWalletConfig.TryAutoLogin);
+            !string.IsNullOrEmpty(CloudWalletConfig.RpcAddress)
+                ? CloudWalletConfig.RpcAddress
+                : chain.RpcEndpoints[0].HttpEndpoint, CloudWalletConfig.TryAutoLogin);
 #elif UNITY_ANDROID || UNITY_IOS
-        _waxCloudWalletPlugin.InitializeMobile(WaxCloudWalletConfig.LocalPort, WaxCloudWalletConfig.SigningWebsiteUrl,
-            WaxCloudWalletConfig.HostLocalWebsite, WaxCloudWalletConfig.IndexHtmlString,
-            WaxCloudWalletConfig.WaxJsHtmlString);
+        _waxCloudWalletPlugin.InitializeMobile(CloudWalletConfig.LocalPort, CloudWalletConfig.SigningWebsiteUrl,
+            CloudWalletConfig.HostLocalWebsite, CloudWalletConfig.IndexHtmlString,
+            CloudWalletConfig.WaxJsHtmlString);
 #endif
             _waxCloudWalletPlugin.OnLoggedIn = loginEvent =>
             {
