@@ -74,7 +74,6 @@ Then in your Unity project, copy the sources from `UniversalAuthenticatorLibrary
 
 ---
 
-
 # Dependencies
 None of the dependencies is contained in this Package and no matter which installation method you choose, you have to install it manually in addition to this Package.
 
