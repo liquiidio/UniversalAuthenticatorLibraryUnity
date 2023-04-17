@@ -78,7 +78,7 @@ namespace UniversalAuthenticatorLibrary
             else
             {
                 // check for existing session and resume if possible
-                await AttemptSessionLogin(authenticators.AvailableAuthenticators);
+                await AttemptSessionLogin();
 
                 CreateUalPanel(authenticators.AvailableAuthenticators);
             }
@@ -87,7 +87,7 @@ namespace UniversalAuthenticatorLibrary
         // override in Canvas/UiToolkit
         protected abstract void CreateUalPanel(Authenticator[] authenticators);
 
-        private async Task AttemptSessionLogin(Authenticator[] availableAuthenticators)
+        private async Task AttemptSessionLogin()
         {
             var sessionExpiration = PlayerPrefs.GetString(UalConstants.SESSION_EXPIRATION_KEY);
             if (!string.IsNullOrEmpty(sessionExpiration))
@@ -103,7 +103,8 @@ namespace UniversalAuthenticatorLibrary
                     var sessionAuthenticator =
                         Authenticators.FirstOrDefault(a => a.GetType().Name == authenticatorName);
                     var accountName = PlayerPrefs.GetString(UalConstants.SESSION_ACCOUNT_NAME_KEY);
-                    await LoginUser(sessionAuthenticator, accountName);
+                    if(sessionAuthenticator != null && !string.IsNullOrEmpty(accountName))
+                        await LoginUser(sessionAuthenticator, accountName);
                 }
             }
         }
