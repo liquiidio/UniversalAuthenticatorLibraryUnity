@@ -14,24 +14,20 @@ namespace UniversalAuthenticatorLibrary.Examples.UiToolkit
         async void Start()
         {
             await UnityUiToolkitUal.Init();
-            UnityUiToolkitUal.OnUserLogin += OnShowMainView;
+            UnityUiToolkitUal.OnUserLogin += UserLogin;
         }
 
         private async void UserLogin(User user)
         {
             User = user;
             Debug.Log($"User with account-name {await user.GetAccountName()} logged in with {user.GetWalletType()}");
+            UalExamplePanel.Rebind(user);
         }
 
         // transfer tokens using a session  
         public async Task Transact(EosSharp.Core.Api.v1.Action action)
         {
             var transactResult = await User.SignTransaction(new []{ action });
-        }
-
-        private void OnShowMainView(User user)
-        {
-            UalExamplePanel.Rebind(user);
         }
     }
 
