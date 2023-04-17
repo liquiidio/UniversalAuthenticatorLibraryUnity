@@ -1,24 +1,24 @@
 using EosSharp.Core.Api.v1;
 using System.Linq;
 using System.Threading.Tasks;
-using Assets.Packages.WcwUnity.Src;
+using Assets.Packages.CloudWalletUnity.Src;
 using eossharp.EosSharp.EosSharp.Unity3D;
 using EosSharp.Core;
 using EosSharp.Unity3D;
 
 namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
 {
-    public class WaxCloudWalletUser : User
+    public class CloudWalletUser : User
     {
-        private WaxCloudWalletPlugin _waxCloudWalletPlugin;
+        private CloudWalletPlugin _waxCloudWalletPlugin;
         public string AccountName { get; }
 
-        private WcwSignEvent _wcwSignEvent;
-        private WcwErrorEvent _wcwErrorEvent;
+        private CloudWalletSignEvent _wcwSignEvent;
+        private CloudWalletErrorEvent _wcwErrorEvent;
 
         private EosApi _api;
 
-        public WaxCloudWalletUser(string accountName, WaxCloudWalletPlugin waxCloudWalletPlugin)
+        public CloudWalletUser(string accountName, CloudWalletPlugin waxCloudWalletPlugin)
         {
             this.AccountName = accountName;
             this._waxCloudWalletPlugin = waxCloudWalletPlugin;

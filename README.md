@@ -122,7 +122,6 @@ Open the Package Manager Window/Tab
 Click Add Package From Git URL
 Enter URL: https://github.com/liquiidio/WcwUnity.git#upm
 
-
 # Examples 
 
 ## Canvas 

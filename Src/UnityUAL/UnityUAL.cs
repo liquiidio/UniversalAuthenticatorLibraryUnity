@@ -78,7 +78,7 @@ namespace UniversalAuthenticatorLibrary
             else
             {
                 // check for existing session and resume if possible
-                await AttemptSessionLogin(authenticators.AvailableAuthenticators);
+                await AttemptSessionLogin();
 
                 CreateUalPanel(authenticators.AvailableAuthenticators);
             }
@@ -87,7 +87,7 @@ namespace UniversalAuthenticatorLibrary
         // override in Canvas/UiToolkit
         protected abstract void CreateUalPanel(Authenticator[] authenticators);
 
-        private async Task AttemptSessionLogin(Authenticator[] availableAuthenticators)
+        private async Task AttemptSessionLogin()
         {
             var sessionExpiration = PlayerPrefs.GetString(UalConstants.SESSION_EXPIRATION_KEY);
             if (!string.IsNullOrEmpty(sessionExpiration))
@@ -100,27 +100,27 @@ namespace UniversalAuthenticatorLibrary
                 else
                 {
                     var authenticatorName = PlayerPrefs.GetString(UalConstants.SESSION_AUTHENTICATOR_KEY);
-                    var sessionAuthenticator =
-                        Authenticators.FirstOrDefault(a => a.GetType().Name == authenticatorName);
+                    var sessionAuthenticator = Authenticators.FirstOrDefault(a => a.GetType().Name == authenticatorName);
                     var accountName = PlayerPrefs.GetString(UalConstants.SESSION_ACCOUNT_NAME_KEY);
-                    await LoginUser(sessionAuthenticator, accountName);
+                    if(sessionAuthenticator != null && !string.IsNullOrEmpty(accountName))
+                        await LoginUser(sessionAuthenticator, accountName);
                 }
             }
         }
 
         internal async Task LoginUser(Authenticator authenticator, string accountName = null)
         {
+            Debug.Log($"Logging in User {accountName} with AuthenticatorType {authenticator.GetType().Name} ");
+
             User user;
 
             // set the active authenticator so we can use it in logout
             ActiveAuthenticator = authenticator;
 
             var invalidateSeconds = ActiveAuthenticator.ShouldInvalidateAfter();
-            var invalidateAt = DateTime.Now;
-            invalidateAt = invalidateAt.AddSeconds(invalidateSeconds);
+            var invalidateAt = DateTime.Now.AddSeconds(invalidateSeconds);
 
-            PlayerPrefs.SetString(UalConstants.SESSION_EXPIRATION_KEY,
-                invalidateAt.ToString(CultureInfo.InvariantCulture));
+            PlayerPrefs.SetString(UalConstants.SESSION_EXPIRATION_KEY, invalidateAt.ToString(CultureInfo.InvariantCulture));
             PlayerPrefs.SetString(UalConstants.SESSION_AUTHENTICATOR_KEY, authenticator.GetType().Name);
 
             try
