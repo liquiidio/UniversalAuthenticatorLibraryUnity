@@ -16,8 +16,6 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
         public string RpcAddress;
 
         public bool TryAutoLogin = false;
-        public string WaxSigningURL = null;
-        public string WaxAutoSigningURL = null;
 
         #endregion
 

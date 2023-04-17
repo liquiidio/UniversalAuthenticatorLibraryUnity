@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -414,6 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4ce0f1e1d3bac4b807882e4f2b0713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Screen: {fileID: 784811162}
   UALUiToolkitExample: {fileID: 1502807971}
 --- !u!114 &784811162
 MonoBehaviour:
@@ -703,6 +704,10 @@ PrefabInstance:
       propertyPath: Authenticators.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1364181932270644840, guid: d5e196c296bd09d43804629902b575da, type: 3}
+      propertyPath: Screen
+      value: 
+      objectReference: {fileID: 4806542824912081087}
     - target: {fileID: 6069075826312227737, guid: d5e196c296bd09d43804629902b575da, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -753,6 +758,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5e196c296bd09d43804629902b575da, type: 3}
+--- !u!114 &4806542824912081087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1364181932270644843, guid: d5e196c296bd09d43804629902b575da, type: 3}
+  m_PrefabInstance: {fileID: 4806542824912081086}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5568680673846411816 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1149447778890715798, guid: d5e196c296bd09d43804629902b575da, type: 3}
