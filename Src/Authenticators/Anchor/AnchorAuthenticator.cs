@@ -39,7 +39,8 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.Anchor
             });
         }
 
-        public override async Task<User> Login(string accountName = null)
+        // ReSharper disable once OptionalParameterHierarchyMismatch
+        public override async Task<User> Login(string accountName = SigningRequestConstants.PlaceholderName)
         {
             var session = await _link.RestoreSession(_identifier, new PermissionLevel()
             {

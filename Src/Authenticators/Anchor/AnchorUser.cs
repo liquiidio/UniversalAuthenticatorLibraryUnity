@@ -1,6 +1,7 @@
 using AnchorLinkSharp;
 using EosSharp.Core.Api.v1;
 using System.Threading.Tasks;
+using EosioSigningRequest;
 using Action = EosSharp.Core.Api.v1.Action;
 
 namespace UniversalAuthenticatorLibrary.Src.Authenticators.Anchor
@@ -37,22 +38,60 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.Anchor
         public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction,
             SignTransactionConfig config = null)
         {
-            return await Transact(null, null, transaction);
+            foreach (var action in transaction.actions)
+            {
+                ReplaceAuth(action);
+            }
+            foreach (var contextFreeAction in transaction.context_free_actions)
+            {
+                ReplaceAuth(contextFreeAction);
+            }
+
+            return await Transact(null, null, transaction, config);
         }
 
         public override async Task<SignTransactionResponse> SignTransaction(Action[] actions,
             SignTransactionConfig config = null)
         {
-            return await Transact(null, actions, null);
+            foreach (var action in actions)
+            {
+                ReplaceAuth(action);
+            }
+            return await Transact(null, actions, null, config);
         }
 
-        private async Task<SignTransactionResponse> Transact(Action action, Action[] actions, Transaction transaction)
+        private void ReplaceAuth(Action action)
+        {
+            foreach (var permissionLevel in action.authorization)
+            {
+                if (permissionLevel.actor == SigningRequestConstants.PlaceholderName)
+                {
+                    permissionLevel.actor = Session.Auth.actor;
+                }
+                if (permissionLevel.permission == SigningRequestConstants.PlaceholderPermission)
+                {
+                    permissionLevel.permission = Session.Auth.permission;
+                }
+            }
+        }
+
+        private async Task<SignTransactionResponse> Transact(Action action, Action[] actions, Transaction transaction,
+            SignTransactionConfig config = null)
         {
             UalError ualError;
+            TransactOptions transactOptions = null;
+            if (config != null)
+            {
+                transactOptions = new TransactOptions()
+                {
+                    Broadcast = config.Broadcast
+                };
+            }
+
             try
             {
                 var transactResult = await Session.Transact(new TransactArgs()
-                    {Action = action, Actions = actions, Transaction = transaction});
+                    {Action = action, Actions = actions, Transaction = transaction}, transactOptions);
                 return new SignTransactionResponse()
                 {
                     Transaction = transactResult.Processed,
