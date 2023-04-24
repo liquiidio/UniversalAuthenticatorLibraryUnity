@@ -9,13 +9,6 @@
 </div>
 
 ---
-
-<div align="center">
- 
-[![Build documents](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/docs.yml/badge.svg)](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/docs.yml)
-[![Deploy](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/deploy.yml/badge.svg)](https://github.com/liquiidio/UniversalAuthenticatorLibrarySharp/actions/workflows/deploy.yml)
- 
- </div>
  
 # Universal Authenticator Library Sharp (UAL)
 
@@ -73,7 +66,6 @@ Then in your Unity project, copy the sources from `UniversalAuthenticatorLibrary
 
 
 ---
-
 
 # Dependencies
 None of the dependencies is contained in this Package and no matter which installation method you choose, you have to install it manually in addition to this Package.
