@@ -88,7 +88,7 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
         {
             _waxCloudWalletPlugin = new GameObject(nameof(CloudWalletPlugin)).AddComponent<CloudWalletPlugin>();
 
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if (UNITY_EDITOR || UNITY_STANDALONE) && !UNITY_WEBGL && !UNITY_ANDROID && !UNITY_IOS
             _waxCloudWalletPlugin.InitializeDesktop(CloudWalletConfig.LocalPort,
                 CloudWalletConfig.SigningWebsiteUrl,
                 CloudWalletConfig.HostLocalWebsite, $"{Application.dataPath}/{CloudWalletConfig.IndexHtmlPath}",
