@@ -63,14 +63,14 @@ namespace UniversalAuthenticatorLibrary.Src.Authenticators.WaxCloudWallet
         public override async Task<SignTransactionResponse> SignTransaction(Transaction transaction,
             SignTransactionConfig config = null)
         {
-            _waxCloudWalletPlugin.Sign(transaction.actions.ToArray());
+            _waxCloudWalletPlugin.Sign(transaction.actions.ToArray(), config.Broadcast, config.BlocksBehind, config.ExpireSeconds);
             return await WaitForEvent();
         }
 
         public override async Task<SignTransactionResponse> SignTransaction(Action[] actions,
             SignTransactionConfig config = null)
         {
-            _waxCloudWalletPlugin.Sign(actions);
+            _waxCloudWalletPlugin.Sign(actions, config.Broadcast, config.BlocksBehind, config.ExpireSeconds);
             return await WaitForEvent();
         }
 
